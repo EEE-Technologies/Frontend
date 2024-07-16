@@ -54,9 +54,14 @@ body {
     color: #007bff;
 }
 
-.vertical-rectangle {
+.content-div{
+    min-height: calc(100vh - 75px); 
+    background-color: #f0f0f0;
+}
+
+.posts-container {
     width: 1000px; /* Adjust width as needed */
-    height: calc(100vh - 150px); /* Adjust height to touch the bottom and leave space on top */
+    height: calc(100vh - 110px); /* Adjust height to touch the bottom and leave space on top */
     background-color: beige; /* Example background color */
     position: fixed; /* Fixed positioning to stay in viewport */
     bottom: 0; /* Stick to the bottom of the viewport */
@@ -64,3 +69,24 @@ body {
     transform: translateX(-50%); /* Center horizontally */
     border: 2px solid #000000;
 }
+
+  /* New style for the additional div */
+  .floating-bar-div {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    width: 300px; /* Adjust width as needed */
+    height: 750px;
+    padding: 20px;
+    background-color: #afaeae;
+    text-align: center; 
+    border-radius: 25px;
+}
+
+
+.red-border {
+    border: 2px solid red;
+}
+
+
+
