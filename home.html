@@ -5,6 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raytio</title>
     <link rel="stylesheet" href="home.css">
+
+    <style>
+      
+        .post {
+            background-color: #fff; /* Post background color */
+            border: 1px solid #ccc; /* Post border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px;
+            max-width: 600px; /* Example maximum width */
+            height: 500px;
+            margin: 0 auto; /* Center the post */
+            margin-top: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example box shadow */
+            display: flex;
+            flex-direction: column; /* Ensure content stacks vertically */
+            display: flex;
+            flex-direction: column;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .avatar {
+            width: 50px; /* Example avatar size */
+            height: 50px;
+            border-radius: 50%; /* Round avatar */
+            margin-right: 10px;
+        }
+        .username {
+            font-weight: bold; /* Example bold username */
+        }
+        .post-content {
+            margin-bottom: 10px;
+        }
+        .post-image {
+            border-radius: 8px; /* Rounded image corners */
+            height: 300px;
+            width: 550px;
+            margin-left: px;
+            justify-content: center;
+
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .action-btn {
+            padding: 8px 16px;
+            background-color: #007bff; /* Example button background color */
+            color: #fff; /* Example button text color */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .action-btn:hover {
+            background-color: #0056b3; /* Example hover state */
+        }
+
+        .truncate-text {
+            width: 600px; /* Example width for container */
+            white-space: nowrap; /* Prevents text from wrapping */
+            overflow: hidden; /* Hides overflow content */
+            text-overflow: ellipsis; /* Adds ellipsis (...) when text overflows */
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -23,7 +90,79 @@
         <!-- Main content here -->
         <div class="side-div left">Left</div>
         <div class="side-div right">Right</div>
-        <div class="bottom-div">Bottom Center</div>
+        <div class="bottom-div">  
+            <!-- example post 1 -->
+            <div class="post">
+                <div class="post-header red-border">
+                    <img src="images/profile.png" alt="Avatar" class="avatar">
+                    <div class="username">John Doe</div>
+                </div>
+                <div class="post-content red-border">
+                    <p>This is the content of the social media post. It can include text, links, or other media.</p>
+                </div>
+                <div class="post-image red-border">
+                    <img src="images/sample_post_image.jpg" class="post-image" alt="Post Image">
+                </div>
+                <div class="post-actions red-border">
+                    <button class="action-btn">Like</button>
+                    <button class="action-btn">Comment</button>
+                    <button class="action-btn">Share</button>
+                </div>
+                <div class="description">
+                    <p class="truncate-text">
+                        Description text kjbnfalsdkjbcnv alsdkjfbawlekfjbalsdkjfba;skjclv  awb lfabcn vawerbfajv ljbv la sdkj
+                    </p>
+                </div>
+            </div>
+
+             <!-- example post 2 -->
+             <div class="post">
+                <div class="post-header red-border">
+                    <img src="images/profile.png" alt="Avatar" class="avatar">
+                    <div class="username">John Doe</div>
+                </div>
+                <div class="post-content red-border">
+                    <p>This is the content of the social media post. It can include text, links, or other media.</p>
+                </div>
+                <div class="post-image red-border">
+                    <img src="images/sample_post_image.jpg" class="post-image" alt="Post Image">
+                </div>
+                <div class="post-actions red-border">
+                    <button class="action-btn">Like</button>
+                    <button class="action-btn">Comment</button>
+                    <button class="action-btn">Share</button>
+                </div>
+                <div class="description">
+                    <p class="truncate-text">
+                        Description text kjbnfalsdkjbcnv alsdkjfbawlekfjbalsdkjfba;skjclv  awb lfabcn vawerbfajv ljbv la sdkj
+                    </p>
+                </div>
+            </div>
+
+             <!-- example post 3 -->
+             <div class="post">
+                <div class="post-header red-border">
+                    <img src="images/profile.png" alt="Avatar" class="avatar">
+                    <div class="username">John Doe</div>
+                </div>
+                <div class="post-content red-border">
+                    <p>This is the content of the social media post. It can include text, links, or other media.</p>
+                </div>
+                <div class="post-image red-border">
+                    <img src="images/sample_post_image.jpg" class="post-image" alt="Post Image">
+                </div>
+                <div class="post-actions red-border">
+                    <button class="action-btn">Like</button>
+                    <button class="action-btn">Comment</button>
+                    <button class="action-btn">Share</button>
+                </div>
+                <div class="description">
+                    <p class="truncate-text">
+                        Description text kjbnfalsdkjbcnv alsdkjfbawlekfjbalsdkjfba;skjclv  awb lfabcn vawerbfajv ljbv la sdkj
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
