@@ -1,92 +1,62 @@
-body {
+body, html {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars */
 }
 
 .navbar {
+    width: 100%;
+    height: 70px; /* Adjust the height as needed */
+    background-color: #333; /* Example background color */
+    color: white; /* Example text color */
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 40px
+    justify-content: space-between;
+    padding: 0 20px; /* Example padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for the navbar */
+    box-sizing: border-box; /* Ensure padding is included in the height */
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    display: flex;
-
+.content {
+    height: calc(100vh - 70px); /* Full viewport height minus navbar height */
+    overflow: auto; /* Allows scrolling within the content area if needed */
+    padding: 20px; /* Example padding */
+    background-color: #f9f9f9; /* Example background color */
+    position: relative;
 }
-
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-item {
-    margin-left: 1.5rem;
-}
-.navbar-item img {
-    width: 60px; /* Adjust image width */
-    height: 60px; /* Adjust image height */
-    vertical-align: middle; /* Align image vertically */
-    border-radius: 50%;
-    object-fit: cover;
-    margin: auto;
-    border: 2px solid #000000;
-
-}
-.navbar-item a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.navbar-item a:hover {
-    color: #007bff;
-}
-
-.content-div{
-    min-height: calc(100vh - 75px); 
-    background-color: #f0f0f0;
-}
-
-.posts-container {
-    width: 1000px; /* Adjust width as needed */
-    height: calc(100vh - 110px); /* Adjust height to touch the bottom and leave space on top */
-    background-color: beige; /* Example background color */
-    position: fixed; /* Fixed positioning to stay in viewport */
-    bottom: 0; /* Stick to the bottom of the viewport */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center horizontally */
-    border: 2px solid #000000;
-}
-
-  /* New style for the additional div */
-  .floating-bar-div {
-    position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    width: 300px; /* Adjust width as needed */
-    height: 750px;
-    padding: 20px;
-    background-color: #afaeae;
-    text-align: center; 
-    border-radius: 25px;
-}
-
 
 .red-border {
     border: 2px solid red;
 }
 
+.side-div {
+    width: 350px; /* Adjust width as needed */
+    height: 700px; /* Adjust height as needed */
+    background-color: lightblue; /* Example background color */
+    position: absolute;
+    top: 80px; /* Adjust top position as needed */
+    border-radius: 25px;
+}
 
+.side-div.left {
+    left: 0px;
+    margin-left: 50px;
 
+}
+
+.side-div.right {
+    right: 0;
+    margin-right: 50px;
+
+}
+
+.bottom-div {
+    width: 1000px; /* Adjust width as needed */
+    height: 850px; /* Adjust height as needed */
+    background-color: lightgreen; /* Example background color */
+    position: absolute;
+    bottom: 20px; /* Adjust bottom position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}

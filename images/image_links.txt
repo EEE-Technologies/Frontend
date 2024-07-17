@@ -1,0 +1,2 @@
+community.png = https://www.flaticon.com/free-icon/community_9278608?term=community&page=1&position=2&origin=search&related_id=9278608
+send.png = https://www.flaticon.com/free-icon/send_9293734?term=send&related_id=9293734
