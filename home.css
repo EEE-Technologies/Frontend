@@ -61,3 +61,63 @@ body, html {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.post {
+    background-color: #fff; /* Post background color */
+    border: 1px solid #ccc; /* Post border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    max-width: 600px; /* Example maximum width */
+    height: 500px;
+    margin: 0 auto; /* Center the post */
+    margin-top: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example box shadow */
+    display: flex;
+    flex-direction: column; /* Ensure content stacks vertically */
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 50px; /* Example avatar size */
+    height: 50px;
+    border-radius: 50%; /* Round avatar */
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold; /* Example bold username */
+}
+
+.post-content {
+    margin-bottom: 10px;
+}
+
+.post-image {
+    border-radius: 8px; /* Rounded image corners */
+    height: 300px;
+    width: 550px;
+    margin-left: px;
+    justify-content: center;
+}
+
+.post-actions {
+    display: flex;
+    /* justify-content: space-between; */
+    margin-top: 10px;
+}
+
+.action-btn {
+    margin-left: 5px;   /* Adds margin on the left side */
+    margin-right: 5px;  /* Adds margin on the right side */
+    padding: 8px 16px;
+    background-color: #007bff; /* Example button background color */
+    color: #fff; /* Example button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

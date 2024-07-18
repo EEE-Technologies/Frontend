@@ -7,67 +7,6 @@
     <link rel="stylesheet" href="home.css">
 
     <style>
-        .post {
-            background-color: #fff; /* Post background color */
-            border: 1px solid #ccc; /* Post border */
-            border-radius: 8px; /* Rounded corners */
-            padding: 20px;
-            max-width: 600px; /* Example maximum width */
-            height: 500px;
-            margin: 0 auto; /* Center the post */
-            margin-top: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example box shadow */
-            display: flex;
-            flex-direction: column; /* Ensure content stacks vertically */
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .avatar {
-            width: 50px; /* Example avatar size */
-            height: 50px;
-            border-radius: 50%; /* Round avatar */
-            margin-right: 10px;
-        }
-
-        .username {
-            font-weight: bold; /* Example bold username */
-        }
-
-        .post-content {
-            margin-bottom: 10px;
-        }
-
-        .post-image {
-            border-radius: 8px; /* Rounded image corners */
-            height: 300px;
-            width: 550px;
-            margin-left: px;
-            justify-content: center;
-        }
-
-        .post-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .action-btn {
-            padding: 8px 16px;
-            background-color: #007bff; /* Example button background color */
-            color: #fff; /* Example button text color */
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .action-btn:hover {
-            background-color: #0056b3; /* Example hover state */
-        }
 
         .truncate-text {
             width: 600px; /* Example width for container */
@@ -76,9 +15,60 @@
             text-overflow: ellipsis; /* Adds ellipsis (...) when text overflows */
         }
 
-        .new-color {
-            background-color: lightblue;
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .post-actions {
+            display: flex;
+            margin-top: 10px; /* Example margin between post content and actions */
+        }
+
+        .action-img {
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 25px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer; /* Ensure cursor changes to pointer on hover */
+            /* Add additional styling as per your design */
+        }
+
     </style>
 </head>
 <body>
@@ -95,9 +85,28 @@
     </div>
 
     <div class="content red-border">
-        <!-- Main content here -->
-        <div class="side-div left">Left <button onclick="addPost()" class="action-btn">Add Post</button></div>
-        <div class="side-div right">Right</div>
+        <div class="side-div left">Left <div class="form-container">
+            <h2>Create a New Post</h2>
+            <form id="postForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+    
+                <label for="profilePicture">Profile Picture:</label>
+                <input type="file" id="profilePicture" name="profilePicture" required>
+    
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+    
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+    
+                <label for="image">Post Picture:</label>
+                <input type="file" id="image" name="image" required>
+    
+                <button type="submit">Submit</button>
+            </form>
+        </div>Add Post</button></div>
+        <div class="side-div right">Right </div>
         <div class="bottom-div" id="posts-content-container">  
             <!-- Posts will be appended here -->
         </div>
