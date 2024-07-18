@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="home.css">
 
     <style>
-      
         .post {
             background-color: #fff; /* Post background color */
             border: 1px solid #ccc; /* Post border */
@@ -20,39 +19,43 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example box shadow */
             display: flex;
             flex-direction: column; /* Ensure content stacks vertically */
-            display: flex;
-            flex-direction: column;
         }
+
         .post-header {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
+
         .avatar {
             width: 50px; /* Example avatar size */
             height: 50px;
             border-radius: 50%; /* Round avatar */
             margin-right: 10px;
         }
+
         .username {
             font-weight: bold; /* Example bold username */
         }
+
         .post-content {
             margin-bottom: 10px;
         }
+
         .post-image {
             border-radius: 8px; /* Rounded image corners */
             height: 300px;
             width: 550px;
             margin-left: px;
             justify-content: center;
-
         }
+
         .post-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
         }
+
         .action-btn {
             padding: 8px 16px;
             background-color: #007bff; /* Example button background color */
@@ -61,6 +64,7 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         .action-btn:hover {
             background-color: #0056b3; /* Example hover state */
         }
@@ -70,6 +74,10 @@
             white-space: nowrap; /* Prevents text from wrapping */
             overflow: hidden; /* Hides overflow content */
             text-overflow: ellipsis; /* Adds ellipsis (...) when text overflows */
+        }
+
+        .new-color {
+            background-color: lightblue;
         }
     </style>
 </head>
@@ -88,82 +96,15 @@
 
     <div class="content red-border">
         <!-- Main content here -->
-        <div class="side-div left">Left</div>
+        <div class="side-div left">Left <button onclick="addPost()" class="action-btn">Add Post</button></div>
         <div class="side-div right">Right</div>
-        <div class="bottom-div">  
-            <!-- example post 1 -->
-            <div class="post">
-                <div class="post-header red-border">
-                    <img src="images/profile.png" alt="Avatar" class="avatar">
-                    <div class="username">John Doe</div>
-                </div>
-                <div class="post-content red-border">
-                    <p>This is the content of the social media post. It can include text, links, or other media.</p>
-                </div>
-                <div class="post-image red-border">
-                    <img src="images/sample_post_image.jpg" class="post-image" alt="Post Image">
-                </div>
-                <div class="post-actions red-border">
-                    <button class="action-btn">Like</button>
-                    <button class="action-btn">Comment</button>
-                    <button class="action-btn">Share</button>
-                </div>
-                <div class="description">
-                    <p class="truncate-text">
-                        Description text kjbnfalsdkjbcnv alsdkjfbawlekfjbalsdkjfba;skjclv  awb lfabcn vawerbfajv ljbv la sdkj
-                    </p>
-                </div>
-            </div>
-
-             <!-- example post 2 -->
-             <div class="post">
-                <div class="post-header red-border">
-                    <img src="images/profile.png" alt="Avatar" class="avatar">
-                    <div class="username">John Doe</div>
-                </div>
-                <div class="post-content red-border">
-                    <p>This is the content of the social media post. It can include text, links, or other media.</p>
-                </div>
-                <div class="post-image red-border">
-                    <img src="images/sample_post_image.jpg" class="post-image" alt="Post Image">
-                </div>
-                <div class="post-actions red-border">
-                    <button class="action-btn">Like</button>
-                    <button class="action-btn">Comment</button>
-                    <button class="action-btn">Share</button>
-                </div>
-                <div class="description">
-                    <p class="truncate-text">
-                        Description text kjbnfalsdkjbcnv alsdkjfbawlekfjbalsdkjfba;skjclv  awb lfabcn vawerbfajv ljbv la sdkj
-                    </p>
-                </div>
-            </div>
-
-             <!-- example post 3 -->
-             <div class="post">
-                <div class="post-header red-border">
-                    <img src="images/profile.png" alt="Avatar" class="avatar">
-                    <div class="username">John Doe</div>
-                </div>
-                <div class="post-content red-border">
-                    <p>This is the content of the social media post. It can include text, links, or other media.</p>
-                </div>
-                <div class="post-image red-border">
-                    <img src="images/sample_post_image.jpg" class="post-image" alt="Post Image">
-                </div>
-                <div class="post-actions red-border">
-                    <button class="action-btn">Like</button>
-                    <button class="action-btn">Comment</button>
-                    <button class="action-btn">Share</button>
-                </div>
-                <div class="description">
-                    <p class="truncate-text">
-                        Description text kjbnfalsdkjbcnv alsdkjfbawlekfjbalsdkjfba;skjclv  awb lfabcn vawerbfajv ljbv la sdkj
-                    </p>
-                </div>
-            </div>
+        <div class="bottom-div" id="posts-content-container">  
+            <!-- Posts will be appended here -->
         </div>
     </div>
 
+    <script src="home.js"></script>
+
 </body>
 </html>
+

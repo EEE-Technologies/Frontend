@@ -1,0 +1,38 @@
+[
+    {
+      "username": "skywalker42",
+      "image": "adventure.png",
+      "profile_picture": "avatar1.jpg",
+      "title": "Galactic Travels",
+      "description": "Exploring the galaxy, one planet at a time."
+    },
+    {
+      "username": "natureNinja",
+      "image": "forest.jpg",
+      "profile_picture": "ninja_icon.png",
+      "title": "Into the Wild",
+      "description": "Capturing the beauty of the natural world."
+    },
+    {
+      "username": "techGuru88",
+      "image": "gadgets.png",
+      "profile_picture": "tech_avatar.jpg",
+      "title": "Tech Innovations",
+      "description": "Sharing the latest in technology and gadgets."
+    },
+    {
+      "username": "artisticSoul",
+      "image": "painting.jpg",
+      "profile_picture": "art_profile.png",
+      "title": "Creative Expressions",
+      "description": "A journey through colors and emotions."
+    },
+    {
+      "username": "fitnessFanatic",
+      "image": "workout.jpg",
+      "profile_picture": "fit_avatar.png",
+      "title": "Health & Fitness",
+      "description": "Tips and motivation for a healthy lifestyle."
+    }
+  ]
+  
