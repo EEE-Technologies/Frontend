@@ -33,7 +33,12 @@ function createPostFromJSON(postData) {
     bottomDiv.appendChild(post);
 }
 
-// This function opens up the form for creating a post
+//Functions to handle opening and closing posts function 
+function toggleForm() {
+    const overlay = document.getElementById('formOverlay');
+    overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+}
+
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -46,19 +51,8 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     };
     const postDataJSON = JSON.stringify(postData);
 
-
     createPostFromJSON(postData);
 
     document.getElementById('postForm').reset();
-});
-
-
-function toggleForm() {
-    const overlay = document.getElementById('formOverlay');
-    overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
-}
-
-document.getElementById('postForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    toggleForm();
+    toggleForm(); // Close the form after submission
 });

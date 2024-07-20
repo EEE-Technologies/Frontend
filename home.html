@@ -96,20 +96,45 @@
     </div>
 
     <div class="content red-border">
-        <div class="side-div left">Left 
-            <button onclick="toggleForm()">Add Post</button>
+        <div class="side-div left"> 
         </div>
         <div class="side-div right">Right </div>
         <div class="bottom-div" id="posts-content-container">  
             <!-- Posts will be appended here -->
+            <div class="post">
+                <div class="post-header red-border">
+                    <img src="images/default_profile.png" alt="Avatar" class="avatar">
+                    <div class="username">Username</div>
+                </div>
+                <div class="post-content red-border">
+                    <p>Title</p>
+                </div>
+                <div class="post-image red-border">
+                    <img src="images/default_image.jpg" class="post-image" alt="Post Image">
+                </div>
+                <div class="post-actions red-border">
+                    <img src="images/like_icon.png" alt="Like" class="action-img" id="likeButton">
+                    <img src="images/comment_icon.png" alt="Comment" class="action-img" id="commentButton">
+                    <img src="images/share_icon.png" alt="Share" class="action-img" id="shareButton">
+                </div>
+                <div class="description">
+                    <p class="truncate-text">Description</p>
+                </div>
+            </div>
+            
+
+
+
              
         </div>
+
 
         <button class="circle-button" id="showFormButton" onclick="toggleForm()">+</button>
     </div>
 
     <div class="form-overlay" id="formOverlay">
         <div class="form-container" id="postFormContainer">
+            <button class="exit-button" onclick="toggleForm()">×</button>
             <h2>Create a New Post</h2>
             <form id="postForm">
                 <label for="username">Username:</label>
