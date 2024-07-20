@@ -8,7 +8,7 @@ body, html {
 .navbar {
     width: 100%;
     height: 70px; /* Adjust the height as needed */
-    background-color: #333; /* Example background color */
+    background-color: #142d4c; /* Example background color */
     color: white; /* Example text color */
     display: flex;
     align-items: center;
@@ -16,6 +16,16 @@ body, html {
     padding: 0 20px; /* Example padding */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for the navbar */
     box-sizing: border-box; /* Ensure padding is included in the height */
+}
+.navbar-item {
+    background-color: white;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.navbar-item:hover {
+    cursor: pointer;
 }
 
 .content {
@@ -31,17 +41,22 @@ body, html {
 }
 
 .side-div {
-    width: 350px; /* Adjust width as needed */
-    height: 700px; /* Adjust height as needed */
-    background-color: lightblue; /* Example background color */
+    width: 370px; /* Adjust width as needed */
+    height: 800px; /* Adjust height as needed */
+    background-color: #f9f9f9; /* Example background color */
     position: absolute;
-    top: 80px; /* Adjust top position as needed */
+    top: 40px; /* Adjust top position as needed */
     border-radius: 25px;
 }
 
 .side-div.left {
     left: 0px;
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Center horizontally */
+    justify-content: center; /* Center vertically */
+
 
 }
 
@@ -51,41 +66,73 @@ body, html {
 
 }
 
+.side-button {
+    background-color: #ececec; /* Light background color */
+    border: 1px solid #ccc;    /* Light border */
+    border-radius: 20px;        /* Rounded corners */
+    padding: 10px;
+    margin: 13px 0;             /* Margin between buttons */
+    cursor: pointer;
+    font-size: 16px;
+    width: 300px;  
+    height: 60px;              /* Full width */
+    box-sizing: border-box;    /* Include padding and border in element's total width and height */
+}
+
+.side-button:hover {
+    color: white;
+    background-color: #142d4c; /* Slightly darker background on hover */
+}
+
+
 .bottom-div {
-    width: 1000px; /* Adjust width as needed */
-    height: 850px; /* Adjust height as needed */
-    background-color: lightgreen; /* Example background color */
+    width: 900px; /* Adjust width as needed */
+    height: 910px; /* Adjust height as needed */
+    background-color: f9f9f9(187, 189, 187); /* Example background color */
     position: absolute;
     overflow: auto; /* Enables scrolling */
     bottom: 20px; /* Adjust bottom position as needed */
     left: 50%;
+    border-left: 4px solid black; /* Adjust thickness and color as needed */
+    border-right: 4px solid black; /* Adjust thickness and color as needed */
     transform: translateX(-50%);
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    
+
+}
+
+.bottom-div::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .post {
     background-color: #fff; /* Post background color */
     border: 1px solid #ccc; /* Post border */
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 20px; /* Rounded corners */
     padding: 20px;
     max-width: 600px; /* Example maximum width */
-    height: 500px;
+    height: 600px;
     margin: 0 auto; /* Center the post */
     margin-top: 40px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example box shadow */
     display: flex;
     flex-direction: column; /* Ensure content stacks vertically */
+    flex-direction: column;
+    align-items: center;
 }
 
 .post-header {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
+    width: 600px;
 }
 
 .avatar {
     width: 50px; /* Example avatar size */
     height: 50px;
     border-radius: 50%; /* Round avatar */
+    border: 1px solid black;
     margin-right: 10px;
 }
 
@@ -93,22 +140,39 @@ body, html {
     font-weight: bold; /* Example bold username */
 }
 
-.post-content {
-    margin-bottom: 10px;
-}
 
 .post-image {
     border-radius: 8px; /* Rounded image corners */
     height: 300px;
-    width: 550px;
+    width: 600px;
     margin-left: px;
     justify-content: center;
+    border: 1px solid black;
 }
 
 .post-actions {
     display: flex;
     /* justify-content: space-between; */
     margin-top: 10px;
+    width: 600px;
+}
+
+.post-description{
+    width: 600px;
+    max-height: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8; /* number of lines */
+    -webkit-box-orient: vertical;
+}
+
+.action-img {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 25px;
+    height: auto;
+    cursor: pointer;
 }
 
 .action-btn {
@@ -120,4 +184,27 @@ body, html {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.circle-button {
+    width: 60px;
+    height: 60px;
+    background-color: #142d4c;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+}
+
+.circle-button:hover {
+    background-color: #0056b3;
 }

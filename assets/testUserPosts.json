@@ -1,0 +1,16 @@
+{
+  "username": "skywalker42",
+  "profilePicture": "avatar1.jpg",
+  "posts": [
+    {
+      "image": "adventure.png",
+      "title": "Galactic Travels",
+      "description": "Exploring the galaxy, one planet at a time."
+    },
+    {
+      "image": "nebula.png",
+      "title": "Stellar Views",
+      "description": "Witnessing the beauty of the nebulae."
+    }
+  ]
+}
