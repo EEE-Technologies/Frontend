@@ -75,22 +75,23 @@ body, html {
 .post {
     background-color: #fff; /* Post background color */
     border: 1px solid #ccc; /* Post border */
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 20px; /* Rounded corners */
     padding: 20px;
     max-width: 600px; /* Example maximum width */
-    height: 500px;
+    height: 650px;
     margin: 0 auto; /* Center the post */
     margin-top: 40px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example box shadow */
     display: flex;
     flex-direction: column; /* Ensure content stacks vertically */
+    flex-direction: column;
+    align-items: center;
 }
 
 .post-header {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
-    
+    max-width: 600px;
 }
 
 .avatar {
@@ -104,14 +105,12 @@ body, html {
     font-weight: bold; /* Example bold username */
 }
 
-.post-content {
-    margin-bottom: 10px;
-}
+
 
 .post-image {
     border-radius: 8px; /* Rounded image corners */
     height: 300px;
-    width: 550px;
+    width: 600px;
     margin-left: px;
     justify-content: center;
 }
@@ -120,6 +119,17 @@ body, html {
     display: flex;
     /* justify-content: space-between; */
     margin-top: 10px;
+    width: 600px;
+}
+
+.post-description{
+    max-width: 600px;
+    max-height: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* number of lines */
+    -webkit-box-orient: vertical;
 }
 
 .action-btn {
