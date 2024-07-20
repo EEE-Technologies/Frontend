@@ -1,6 +1,7 @@
 community.png = https://www.flaticon.com/free-icon/community_9278608?term=community&page=1&position=2&origin=search&related_id=9278608
 send.png = https://www.flaticon.com/free-icon/send_9293734?term=send&related_id=9293734
 profile.png = https://www.flaticon.com/free-icon/profile_3135715?term=user&page=1&position=5&origin=search&related_id=3135715
-chat = https://www.flaticon.com/free-icon/chat_3416046?term=comment&page=1&position=8&origin=search&related_id=3416046
-like = https://www.flaticon.com/free-icon/like-symbol_5881205?term=like+button&page=1&position=30&origin=search&related_id=5881205
-share = https://www.flaticon.com/free-icon/share_2550240?term=share&page=1&position=20&origin=search&related_id=2550240
+comment_icon.png = https://www.flaticon.com/free-icon/chat_3416046?term=comment&page=1&position=8&origin=search&related_id=3416046
+like_icon.png = https://www.flaticon.com/free-icon/like-symbol_5881205?term=like+button&page=1&position=30&origin=search&related_id=5881205
+share_icon.png = https://www.flaticon.com/free-icon/share_2550240?term=share&page=1&position=20&origin=search&related_id=2550240
+email.png = https://www.flaticon.com/free-icon/email_3178165?term=mail&related_id=3178165
