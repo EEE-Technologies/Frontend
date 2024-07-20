@@ -1,3 +1,10 @@
+// Functions to handle opening and closing posts function 
+function toggleForm() {
+    const overlay = document.getElementById('formOverlay');
+    overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+}
+
+// Take a Json and create a post within that data
 function createPostFromJSON(postData) {
     const { username, profile_picture, image, title, description } = postData;
 
@@ -37,12 +44,7 @@ function createPostFromJSON(postData) {
     console.log('Post created:', postData); // Log to verify post data
 }
 
-// Functions to handle opening and closing posts function 
-function toggleForm() {
-    const overlay = document.getElementById('formOverlay');
-    overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
-}
-
+// Open form and take input create json from it and send json to createPostFromJson
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
