@@ -53,13 +53,18 @@ body, html {
 
 .bottom-div {
     width: 1000px; /* Adjust width as needed */
-    height: 850px; /* Adjust height as needed */
-    background-color: lightgreen; /* Example background color */
+    height: 910px; /* Adjust height as needed */
+    background-color: f9f9f9(187, 189, 187); /* Example background color */
     position: absolute;
     overflow: auto; /* Enables scrolling */
     bottom: 20px; /* Adjust bottom position as needed */
     left: 50%;
+    border-left: 4px solid black; /* Adjust thickness and color as needed */
+    border-right: 4px solid black; /* Adjust thickness and color as needed */
     transform: translateX(-50%);
+
+    
+
 }
 
 .post {

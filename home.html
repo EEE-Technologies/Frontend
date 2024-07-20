@@ -102,6 +102,7 @@
         <div class="side-div right">Right </div>
         <div class="bottom-div" id="posts-content-container">  
             <!-- Posts will be appended here -->
+             
         </div>
 
         <button class="circle-button" id="showFormButton" onclick="toggleForm()">+</button>
@@ -132,16 +133,7 @@
     </div>
 
     <script>
-        function toggleForm() {
-            const overlay = document.getElementById('formOverlay');
-            overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        document.getElementById('postForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Add any additional form processing here
-            toggleForm();
-        });
+        
     </script>
 
     <script src="home.js"></script>
