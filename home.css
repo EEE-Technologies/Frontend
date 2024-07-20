@@ -52,7 +52,7 @@ body, html {
 }
 
 .bottom-div {
-    width: 1000px; /* Adjust width as needed */
+    width: 900px; /* Adjust width as needed */
     height: 910px; /* Adjust height as needed */
     background-color: f9f9f9(187, 189, 187); /* Example background color */
     position: absolute;
@@ -62,9 +62,14 @@ body, html {
     border-left: 4px solid black; /* Adjust thickness and color as needed */
     border-right: 4px solid black; /* Adjust thickness and color as needed */
     transform: translateX(-50%);
-
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
     
 
+}
+
+.bottom-div::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .post {
