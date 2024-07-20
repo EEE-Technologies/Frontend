@@ -31,17 +31,22 @@ body, html {
 }
 
 .side-div {
-    width: 350px; /* Adjust width as needed */
-    height: 700px; /* Adjust height as needed */
-    background-color: lightblue; /* Example background color */
+    width: 370px; /* Adjust width as needed */
+    height: 800px; /* Adjust height as needed */
+    background-color: #f9f9f9; /* Example background color */
     position: absolute;
-    top: 80px; /* Adjust top position as needed */
+    top: 40px; /* Adjust top position as needed */
     border-radius: 25px;
 }
 
 .side-div.left {
     left: 0px;
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Center horizontally */
+    justify-content: center; /* Center vertically */
+
 
 }
 
@@ -50,6 +55,25 @@ body, html {
     margin-right: 50px;
 
 }
+
+.side-button {
+    background-color: #ececec; /* Light background color */
+    border: 1px solid #ccc;    /* Light border */
+    border-radius: 20px;        /* Rounded corners */
+    padding: 10px;
+    margin: 13px 0;             /* Margin between buttons */
+    cursor: pointer;
+    font-size: 16px;
+    width: 300px;  
+    height: 60px;              /* Full width */
+    box-sizing: border-box;    /* Include padding and border in element's total width and height */
+}
+
+.side-button:hover {
+    color: white;
+    background-color: #142d4c; /* Slightly darker background on hover */
+}
+
 
 .bottom-div {
     width: 900px; /* Adjust width as needed */
@@ -131,6 +155,14 @@ body, html {
     display: -webkit-box;
     -webkit-line-clamp: 8; /* number of lines */
     -webkit-box-orient: vertical;
+}
+
+.action-img {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 25px;
+    height: auto;
+    cursor: pointer;
 }
 
 .action-btn {

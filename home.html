@@ -7,13 +7,6 @@
     <link rel="stylesheet" href="home.css">
 
     <style>
-        .truncate-text {
-            width: 600px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
         .form-overlay {
             position: fixed;
             top: 0;
@@ -72,13 +65,6 @@
             margin-top: 10px;
         }
 
-        .action-img {
-            margin-left: 5px;
-            margin-right: 5px;
-            width: 25px;
-            height: auto;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -96,9 +82,20 @@
     </div>
 
     <div class="content red-border">
-        <div class="side-div left"> 
+
+        <div class="side-div left red-border"> 
+            <button class="side-button" id="homeButton">Home</button>
+            <button class="side-button" id="userSearchButton">User Search</button>
+            <button class="side-button" id="communitySearchButton">Community Search</button>
+            <button class="side-button" id="notificationsButton">Notifications</button>
+            <button class="side-button" id="myProfileButton">My Profile</button>
+            <button class="side-button" id="settingsButton">Settings</button>
+            <button class="side-button" id="helpButton">Help</button>
+            <button class="side-button" id="discoverButton">Discover</button>
+            <button class="side-button" id="moreButton">More</button>
         </div>
-        <div class="side-div right">Right </div>
+
+        <div class="side-div right red-border">Right </div>
 
         <!-- This div holds the posts in it -->
         <div class="bottom-div" id="posts-content-container">  
@@ -107,7 +104,7 @@
                 <div class="post-header red-border">
                     <div style="display: flex; align-items: center;">
                         <img src="images/profile.png" alt="Avatar" class="avatar">
-                        <div class="username">Shaun</div>
+                        <div class="username">John Doe</div>
                     </div>
                     <div class="red-border">
                         <h3 >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra a sem eu dapibus. Nullam non pharetra odio, vitae ultricies dolor. </p>
