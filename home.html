@@ -69,9 +69,33 @@
             /* Add additional styling as per your design */
         }
 
+
+        .circle-button {
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+            position: fixed;
+            bottom: 20px;
+            right: 40px;
+        }
+        
+        .circle-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    
     <div class="navbar">
         <!-- Navbar content here -->
         <div style="display: flex; align-items: center; gap: 20px;">
@@ -110,7 +134,12 @@
         <div class="bottom-div" id="posts-content-container">  
             <!-- Posts will be appended here -->
         </div>
+
+        <button class="circle-button" onclick="handleClick()">+</button>
+
     </div>
+
+
 
     <script src="home.js"></script>
 
