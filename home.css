@@ -208,3 +208,31 @@ body, html {
 .circle-button:hover {
     background-color: #0056b3;
 }
+
+.dm-div {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 510px; /* 1/3 of the screen width */
+    height: 100vh; /* Full viewport height */
+    background-color: #a5a5a5; /* Semi-transparent background */
+    color: white;
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensure it appears above other content */
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 4px solid black; /* Adjust thickness and color as needed */
+
+}
+
+/* Styling for the close button */
+.close-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

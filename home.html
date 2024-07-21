@@ -65,34 +65,51 @@
             margin-top: 10px;
         }
 
-
-
-
-        .dm-div {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 510px; /* 1/3 of the screen width */
-            height: 100vh; /* Full viewport height */
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-            color: white;
-            display: none; /* Initially hidden */
-            z-index: 1000; /* Ensure it appears above other content */
-            padding: 20px;
-            box-sizing: border-box;
+        .messages-preview {
+            margin-top: 20px;
+            overflow-y: auto;
+            max-height: calc(100vh - 120px); /* Adjust height as needed */
         }
 
-        /* Styling for the close button */
-        .close-button {
-            background-color: #f44336;
-            color: white;
-            border: none;
+        /* Style for each message preview */
+        .message {
+            display: flex;
+            align-items: center;
             padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
             cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            transition: background-color 0.3s;
         }
+
+        .message:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Style for the avatar */
+        .dm-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        /* Style for the message content */
+        .message-content h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .message-content p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -185,36 +202,79 @@
         </div>
     </div>
 
+    <!-- This div contains the dm chats and is toggable -->
     <div id="dmDiv" class="dm-div">
-        <button id="closeButton" class="close-button">Close</button>
-        <p>This is the new div content.</p>
+        <div>
+            <div style="text-align: center; color: black;">
+                <h2>Direct Messages</h2>
+            </div>
+            <button id="closeButton" class="close-button">Close</button>
+            <div class="messages-preview">
+                <div class="message">
+                    <div class="dm-avatar">
+                        <img src="images/profile.png" alt="User Avatar">
+                    </div>
+                    <div class="message-content">
+                        <h4>User Name</h4>
+                        <p>This is a short preview of the message...</p>
+                    </div>
+                </div>
+                <div class="message">
+                    <div class="dm-avatar">
+                        <img src="images/profile.png" alt="User Avatar">
+                    </div>
+                    <div class="message-content">
+                        <h4>Another User</h4>
+                        <p>Another message preview goes here...</p>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="dm-avatar">
+                        <img src="images/profile.png" alt="User Avatar">
+                    </div>
+                    <div class="message-content">
+                        <h4>User Name</h4>
+                        <p>This is a short preview of the message...</p>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="dm-avatar">
+                        <img src="images/profile.png" alt="User Avatar">
+                    </div>
+                    <div class="message-content">
+                        <h4>User Name</h4>
+                        <p>This is a short preview of the message...</p>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="dm-avatar">
+                        <img src="images/profile.png" alt="User Avatar">
+                    </div>
+                    <div class="message-content">
+                        <h4>User Name</h4>
+                        <p>This is a short preview of the message...</p>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="dm-avatar">
+                        <img src="images/profile.png" alt="User Avatar">
+                    </div>
+                    <div class="message-content">
+                        <h4>User Name</h4>
+                        <p>This is a short preview of the message...</p>
+                    </div>
+                </div>
+                <!-- Add more message previews as needed -->
+            </div>
+        </div>
     </div>
 
     <script>
-        // script.js
-        document.addEventListener('DOMContentLoaded', function() {
-            const triggerImage = document.getElementById('triggerImage');
-            const dmDiv = document.getElementById('dmDiv');
-            const closeButton = document.getElementById('closeButton');
-
-            // Open the overlay div
-            triggerImage.addEventListener('click', function() {
-                dmDiv.style.display = 'block';
-            });
-
-            // Close the overlay div
-            closeButton.addEventListener('click', function() {
-                dmDiv.style.display = 'none';
-            });
-
-            // Optional: Close the overlay when clicking outside of it
-            window.addEventListener('click', function(event) {
-                if (event.target === dmDiv) {
-                    dmDiv.style.display = 'none';
-                }
-            });
-        });
-
+        
     </script>
     <script src="home.js"></script>
 

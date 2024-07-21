@@ -8,11 +8,9 @@ function toggleForm() {
 function createPostFromJSON(postData) {
     const { username, profile_picture, image, title, description } = postData;
 
-    // Create new post element
     const post = document.createElement('div');
     post.className = 'post';
 
-    // Construct post HTML content
     post.innerHTML = `
       <div class="post-header red-border">
           <div style="display: flex; align-items: center;">
@@ -37,7 +35,6 @@ function createPostFromJSON(postData) {
       </div>
     `;
 
-    // Append post to posts container
     const bottomDiv = document.getElementById('posts-content-container');
     bottomDiv.appendChild(post);
 
@@ -56,10 +53,34 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
         image: document.getElementById('image').files[0] ? URL.createObjectURL(document.getElementById('image').files[0]) : ''
     };
 
-    console.log('Form submitted:', postData); // Log to verify post data
+    console.log('Form submitted:', postData); 
 
     createPostFromJSON(postData);
 
     document.getElementById('postForm').reset();
-    toggleForm(); // Close the form after submission
+    toggleForm(); 
+});
+
+// Open and close dm 
+document.addEventListener('DOMContentLoaded', function() {
+    const triggerImage = document.getElementById('triggerImage');
+    const dmDiv = document.getElementById('dmDiv');
+    const closeButton = document.getElementById('closeButton');
+
+    // Open the overlay div
+    triggerImage.addEventListener('click', function() {
+        dmDiv.style.display = 'block';
+    });
+
+    // Close the overlay div
+    closeButton.addEventListener('click', function() {
+        dmDiv.style.display = 'none';
+    });
+
+    // Optional: Close the overlay when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === dmDiv) {
+            dmDiv.style.display = 'none';
+        }
+    });
 });
