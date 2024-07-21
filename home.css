@@ -225,6 +225,52 @@ body, html {
 
 }
 
+.dm-messages-preview {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 120px); /* Adjust height as needed */
+}
+
+/* Style for each message preview */
+.dm-message {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 25px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dm-message:hover {
+    background-color: #e0e0e0;
+}
+
+/* Style for the avatar */
+.dm-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Style for the message content */
+.dm-message-content h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.dm-message-content p {
+    margin: 5px 0 0;
+    font-size: 15px;
+    color: #666;
+}
+
+
+
+
 /* Styling for the close button */
 .close-button {
     background-color: #f44336;

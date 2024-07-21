@@ -65,51 +65,7 @@
             margin-top: 10px;
         }
 
-        .messages-preview {
-            margin-top: 20px;
-            overflow-y: auto;
-            max-height: calc(100vh - 120px); /* Adjust height as needed */
-        }
-
-        /* Style for each message preview */
-        .message {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .message:hover {
-            background-color: #e0e0e0;
-        }
-
-        /* Style for the avatar */
-        .dm-avatar img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        /* Style for the message content */
-        .message-content h4 {
-            margin: 0;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .message-content p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: #666;
-        }
-
-
-
+    
     </style>
 </head>
 <body>
@@ -209,72 +165,14 @@
                 <h2>Direct Messages</h2>
             </div>
             <button id="closeButton" class="close-button">Close</button>
-            <div class="messages-preview">
-                <div class="message">
-                    <div class="dm-avatar">
-                        <img src="images/profile.png" alt="User Avatar">
-                    </div>
-                    <div class="message-content">
-                        <h4>User Name</h4>
-                        <p>This is a short preview of the message...</p>
-                    </div>
-                </div>
-                <div class="message">
-                    <div class="dm-avatar">
-                        <img src="images/profile.png" alt="User Avatar">
-                    </div>
-                    <div class="message-content">
-                        <h4>Another User</h4>
-                        <p>Another message preview goes here...</p>
-                    </div>
-                </div>
-
-                <div class="message">
-                    <div class="dm-avatar">
-                        <img src="images/profile.png" alt="User Avatar">
-                    </div>
-                    <div class="message-content">
-                        <h4>User Name</h4>
-                        <p>This is a short preview of the message...</p>
-                    </div>
-                </div>
-
-                <div class="message">
-                    <div class="dm-avatar">
-                        <img src="images/profile.png" alt="User Avatar">
-                    </div>
-                    <div class="message-content">
-                        <h4>User Name</h4>
-                        <p>This is a short preview of the message...</p>
-                    </div>
-                </div>
-
-                <div class="message">
-                    <div class="dm-avatar">
-                        <img src="images/profile.png" alt="User Avatar">
-                    </div>
-                    <div class="message-content">
-                        <h4>User Name</h4>
-                        <p>This is a short preview of the message...</p>
-                    </div>
-                </div>
-
-                <div class="message">
-                    <div class="dm-avatar">
-                        <img src="images/profile.png" alt="User Avatar">
-                    </div>
-                    <div class="message-content">
-                        <h4>User Name</h4>
-                        <p>This is a short preview of the message...</p>
-                    </div>
-                </div>
+            <div class="dm-messages-preview">
                 <!-- Add more message previews as needed -->
             </div>
         </div>
     </div>
 
     <script>
-        
+
     </script>
     <script src="home.js"></script>
 

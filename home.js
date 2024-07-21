@@ -67,20 +67,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const dmDiv = document.getElementById('dmDiv');
     const closeButton = document.getElementById('closeButton');
 
-    // Open the overlay div
     triggerImage.addEventListener('click', function() {
         dmDiv.style.display = 'block';
     });
 
-    // Close the overlay div
     closeButton.addEventListener('click', function() {
         dmDiv.style.display = 'none';
     });
 
-    // Optional: Close the overlay when clicking outside of it
     window.addEventListener('click', function(event) {
         if (event.target === dmDiv) {
             dmDiv.style.display = 'none';
         }
     });
 });
+
+// Takes a Json Object and turns it into a dm preview
+function addMessage(messageData) {
+    const maxMessages = 8;
+    const messagesContainer = document.querySelector('.dm-messages-preview');
+    const message = document.createElement('div');
+    message.className = 'dm-message';
+
+    message.innerHTML = `
+        <div class="dm-avatar">
+            <img src="${messageData.avatar}" alt="User Avatar">
+        </div>
+        <div class="dm-message-content">
+            <h4>${messageData.username}</h4>
+            <p>${messageData.preview}</p>
+        </div>
+    `;
+
+    if (messagesContainer.children.length >= maxMessages) {
+        messagesContainer.removeChild(messagesContainer.lastElementChild);
+    }
+
+    messagesContainer.insertBefore(message, messagesContainer.firstChild);
+}
+
+// Example usage with a JSON object
+const messageDataList = [
+    { avatar: 'images/profile.png', username: 'User 1', preview: 'This is a short preview of message 1...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2...' }
+];
+// For each loop to use each json and apply it to the function
+messageDataList.forEach(data => addMessage(data));
+// Add a new message individaully
+addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'This is a new mesasdfasdfasdfasdfasdfassageadfaqwe' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
