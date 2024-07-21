@@ -36,10 +36,11 @@ function createPostFromJSON(postData) {
     `;
 
     const bottomDiv = document.getElementById('posts-content-container');
-    bottomDiv.appendChild(post);
+    bottomDiv.insertBefore(post, bottomDiv.firstChild);
 
     console.log('Post created:', postData); // Log to verify post data
 }
+
 
 // Open form and take input create json from it and send json to createPostFromJson
 document.getElementById('postForm').addEventListener('submit', function(event) {
