@@ -126,3 +126,36 @@ const messageDataList = [
 messageDataList.forEach(data => addMessage(data));
 // Add a new message individaully
 addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
+
+// This function takes a json and parses and puts the data into the recommended accounts to follow
+function addRecommendationsFromJson( jsonData) {
+    const data = JSON.parse(jsonData);
+    const parent = document.querySelector('.account-recommendation-div');
+    const limit = Math.min(data.length, 3);
+
+    for (let i = 0; i < limit; i++) {
+        const { img, username, title } = data[i];
+        const recommendation = document.createElement('div');
+        recommendation.className = 'account-recommendation';
+
+        recommendation.innerHTML = `
+            <img src="${img}" alt="${username}" class="account-recommendation-img">
+            <div class="account-recommendation-info">
+                <p class="username">${username}</p>
+                <p class="title">${title}</p>
+            </div>
+            <button class="account-recommendation-follow-btn">Follow</button>
+        `;
+
+        parent.appendChild(recommendation);
+    }
+}
+const jsonData = `
+[
+    {"img": "images/profile.png", "username": "John Doe Cousin", "title": "Title1"},
+    {"img": "images/profile.png", "username": "John Doe Friend", "title": "Title2"},
+    {"img": "images/profile.png", "username": "John Doe Coworker", "title": "Title3"},
+    {"img": "images/profile.png", "username": "John Doe Neighbor", "title": "Title4"}
+]`;
+
+addRecommendationsFromJson(jsonData);
