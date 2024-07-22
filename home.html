@@ -65,6 +65,39 @@
             margin-top: 10px;
             
         }
+
+        .account-recommendation {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            justify-content: center; /* Center horizontally */
+            position: relative;
+        }
+
+        .trending-topics-div {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+            width: 100%; /* Full width of parent */
+            height: 470px; /* Full height of parent */
+            border-radius: 20px;
+            border: 4px solid black;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        .trending-topic {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+
             
     </style>
 </head>
@@ -100,7 +133,17 @@
         <div class="side-div right red-border">
             <div class="account-recommendation-div ">
                 <h3 style="text-align: center;">Recommendations</h3>
-            </div>    
+            </div>  
+            
+            <div class="trending-topics-div " >
+                <h3 style="text-align: center;">Trending</h3>
+                <div class="trending-topic">Topic 1</div>
+                <div class="trending-topic">Topic 2</div>
+                <div class="trending-topic">Topic 3</div>
+                <div class="trending-topic">Topic 4</div>
+                <div class="trending-topic">Topic 5</div>
+            </div>
+            
         </div>
 
         <!-- This div holds the posts in it -->
@@ -130,7 +173,8 @@
                     <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-                
+            <button class="circle-button" id="showFormButton" onclick="toggleForm()">+</button>
+
         </div>
 
 
