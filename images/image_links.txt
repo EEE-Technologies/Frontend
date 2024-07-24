@@ -5,3 +5,5 @@ comment_icon.png = https://www.flaticon.com/free-icon/chat_3416046?term=comment&
 like_icon.png = https://www.flaticon.com/free-icon/like-symbol_5881205?term=like+button&page=1&position=30&origin=search&related_id=5881205
 share_icon.png = https://www.flaticon.com/free-icon/share_2550240?term=share&page=1&position=20&origin=search&related_id=2550240
 email.png = https://www.flaticon.com/free-icon/email_3178165?term=mail&related_id=3178165
+trend.png = https://www.flaticon.com/free-icon/trend_3121571?term=trending&page=1&position=11&origin=search&related_id=3121571
+default_user.png = https://www.flaticon.com/free-icon/user_847969?term=default+profile&page=1&position=1&origin=search&related_id=847969

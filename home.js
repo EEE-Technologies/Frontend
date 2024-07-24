@@ -8,15 +8,22 @@ function toggleForm() {
 function createPostFromJSON(postData) {
     const { username, profile_picture, image, title, description } = postData;
 
-    // Create new post element
+    // Define default images
+    const defaultProfilePicture = 'images/default_user.png';
+    const defaultPostImage = 'images/default_image.jpg';
+
+    // Determine image sources
+    const profilePictureSrc = profile_picture ? profile_picture : defaultProfilePicture;
+    const postImageSrc = image ? image : defaultPostImage;
+
+    // Create post element
     const post = document.createElement('div');
     post.className = 'post';
 
-    // Construct post HTML content
     post.innerHTML = `
       <div class="post-header red-border">
           <div style="display: flex; align-items: center;">
-              <img src="${profile_picture || 'images/default_profile.png'}" alt="Avatar" class="avatar">
+              <img src="${profilePictureSrc}" alt="Avatar" class="avatar">
               <div class="username">${username || 'Anonymous'}</div>
           </div>
           <div class="red-border">
@@ -25,7 +32,7 @@ function createPostFromJSON(postData) {
       </div>
       
       <div class="post-image red-border">
-          <img src="${image || 'images/default_image.jpg'}" class="post-image" alt="Post Image">
+          <img src="${postImageSrc}" class="post-image" alt="Post Image">
       </div>
       <div class="post-actions red-border">
           <img src="images/like_icon.png" alt="Like" class="action-img" id="likeButton">
@@ -37,12 +44,13 @@ function createPostFromJSON(postData) {
       </div>
     `;
 
-    // Append post to posts container
     const bottomDiv = document.getElementById('posts-content-container');
-    bottomDiv.appendChild(post);
+    bottomDiv.insertBefore(post, bottomDiv.firstChild);
 
     console.log('Post created:', postData); // Log to verify post data
 }
+
+
 
 // Open form and take input create json from it and send json to createPostFromJson
 document.getElementById('postForm').addEventListener('submit', function(event) {
@@ -56,10 +64,159 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
         image: document.getElementById('image').files[0] ? URL.createObjectURL(document.getElementById('image').files[0]) : ''
     };
 
-    console.log('Form submitted:', postData); // Log to verify post data
+    console.log('Form submitted:', postData); 
 
     createPostFromJSON(postData);
 
     document.getElementById('postForm').reset();
-    toggleForm(); // Close the form after submission
+    toggleForm(); 
 });
+
+// Open and close dm 
+document.addEventListener('DOMContentLoaded', function() {
+    const triggerImage = document.getElementById('triggerImage');
+    const dmDiv = document.getElementById('dmDiv');
+    const closeButton = document.getElementById('closeButton');
+
+    triggerImage.addEventListener('click', function() {
+        dmDiv.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function() {
+        dmDiv.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === dmDiv) {
+            dmDiv.style.display = 'none';
+        }
+    });
+});
+
+
+function addMessage(messageData) {
+    const maxMessages = 8;
+    const messagesContainer = document.querySelector('.dm-messages-preview');
+    
+    // Ensure there's a <ul> for the messages
+    let messageList = messagesContainer.querySelector('ul');
+    if (!messageList) {
+        messageList = document.createElement('ul');
+        messagesContainer.appendChild(messageList);
+    }
+
+    const messageItem = document.createElement('li');
+    messageItem.className = 'dm-message';
+
+    messageItem.innerHTML = `
+        <div class="dm-avatar">
+            <img src="${messageData.avatar}" alt="User Avatar">
+        </div>
+        <div class="dm-message-content">
+            <h4>${messageData.username}</h4>
+            <p>${messageData.preview}</p>
+        </div>
+    `;
+
+    if (messageList.children.length >= maxMessages) {
+        messageList.removeChild(messageList.lastElementChild);
+    }
+
+    messageList.insertBefore(messageItem, messageList.firstChild);
+}
+
+
+// Example usage with a JSON object
+const messageDataList = [
+    { avatar: 'images/profile.png', username: 'User 1', preview: 'This is a short preview of message 1' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2'},
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2..dfasdfasdfasdfasdfasdfwdqsfouabsdflakjsdflkjbdasfkljbadfslkjbdafskjlbdfaskljb.' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2.sdfasdfasd..' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2.asdfasdfasdfa..' },
+    { avatar: 'images/profile.png', username: 'User 2', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }
+];
+// For each loop to use each json and apply it to the function
+messageDataList.forEach(data => addMessage(data));
+// Add a new message individaully
+addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
+
+// This function takes a json and parses and puts the data into the recommended accounts to follow
+function addRecommendationsFromJson( jsonData) {
+    const data = JSON.parse(jsonData);
+    const parent = document.querySelector('.account-recommendation-div');
+    const limit = Math.min(data.length, 3);
+
+    for (let i = 0; i < limit; i++) {
+        const { img, username, title } = data[i];
+        const recommendation = document.createElement('div');
+        recommendation.className = 'account-recommendation';
+
+        recommendation.innerHTML = `
+            <img src="${img}" alt="${username}" class="account-recommendation-img">
+            <div class="account-recommendation-info">
+                <p class="username">${username}</p>
+                <p class="title">${title}</p>
+            </div>
+            <button class="account-recommendation-follow-btn">Follow</button>
+        `;
+
+        parent.appendChild(recommendation);
+    }
+}
+const jsonData = `
+[
+    {"img": "images/profile.png", "username": "John Doe Cousin", "title": "Title1"},
+    {"img": "images/profile.png", "username": "John Doe Friend", "title": "Title2"},
+    {"img": "images/profile.png", "username": "John Doe Coworker", "title": "Title3"},
+    {"img": "images/profile.png", "username": "John Doe Neighbor", "title": "Title4"}
+]`;
+
+addRecommendationsFromJson(jsonData);
+
+// Function to populate the trending topics allows and replaces up to 7 items in div
+function updateTrendingTopics(jsonItem) {
+    const container = document.querySelector('.trending-topics-div');
+    const currentTopics = Array.from(container.querySelectorAll('.trending-topic'));
+
+    const topicDiv = document.createElement('div');
+    topicDiv.classList.add('trending-topic');
+
+    const iconImg = document.createElement('img');
+    iconImg.src = jsonItem.icon;
+    iconImg.alt = 'icon';
+    iconImg.classList.add('trending-icon');
+
+    topicDiv.appendChild(iconImg);
+    topicDiv.appendChild(document.createTextNode(jsonItem.topic));
+
+    container.insertBefore(topicDiv, container.children[1]);
+
+    if (currentTopics.length >= 7) {
+        currentTopics[currentTopics.length - 1].remove();
+    }
+}
+
+// Update trending topics with a new item
+// updateTrendingTopics(newTopic);
+const trendingData = [
+    { icon: 'images/trend.png', topic: 'AI Advancements in Healthcare' },
+    { icon: 'images/trend.png', topic: 'Global Climate Summit 2024' },
+    { icon: 'images/trend.png', topic: 'Breakthrough in Quantum Computing' },
+    { icon: 'images/trend.png', topic: 'Renewable Energy Innovations' },
+    { icon: 'images/trend.png', topic: 'SpaceX Mars Mission Update' },
+    { icon: 'images/trend.png', topic: 'Cryptocurrency Market Trends' },
+    { icon: 'images/trend.png', topic: 'New Electric Vehicle Releases' },
+    { icon: 'images/trend.png', topic: 'Advances in Cancer Research' },
+    { icon: 'images/trend.png', topic: 'Global Economic Outlook 2024' }
+];
+
+// Run the function on each item
+trendingData.forEach(updateTrendingTopics);
+
+

@@ -56,14 +56,13 @@ body, html {
     flex-direction: column;
     align-items: center;   /* Center horizontally */
     justify-content: center; /* Center vertically */
-
-
 }
 
 .side-div.right {
     right: 0;
     margin-right: 50px;
-
+    top: 10px; /* Adjust top position as needed */
+    height: 840px;
 }
 
 .side-button {
@@ -108,8 +107,7 @@ body, html {
 
 .post {
     background-color: #fff; /* Post background color */
-    border: 1px solid #ccc; /* Post border */
-    border-radius: 20px; /* Rounded corners */
+    border: 4px solid black;    border-radius: 20px; /* Rounded corners */
     padding: 20px;
     max-width: 600px; /* Example maximum width */
     height: 600px;
@@ -132,7 +130,7 @@ body, html {
     width: 50px; /* Example avatar size */
     height: 50px;
     border-radius: 50%; /* Round avatar */
-    border: 1px solid black;
+    border: 2px solid black;
     margin-right: 10px;
 }
 
@@ -187,6 +185,9 @@ body, html {
 }
 
 .circle-button {
+    position: fixed; /* Stays fixed relative to the viewport */
+    bottom: 20px; 
+    right: 28vw; /* Distance from the right edge of the viewport */
     width: 60px;
     height: 60px;
     background-color: #142d4c;
@@ -200,11 +201,323 @@ body, html {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s;
-    position: fixed;
-    bottom: 20px;
-    right: 40px;
+    z-index: 1000; /* Ensure it's on top of all other elements */
 }
 
 .circle-button:hover {
+    background-color: #0056b3;
+}
+
+.dm-div {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 510px; /* 1/3 of the screen width */
+    height: 100vh; /* Full viewport height */
+    background-color: #eeeeee;
+    color: white;
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensure it appears above other content */
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 4px solid black; /* Adjust thickness and color as needed */
+
+}
+
+.dm-messages-preview {
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 120px); /* Adjust height as needed */
+}
+.dm-messages-preview ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.dm-message:last-child {
+    border-bottom: none; /* Remove the line for the last item */
+}
+
+/* Style for each message preview */
+.dm-message {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 25px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd; /* Line between messages */
+    transition: background-color 0.3s;
+}
+
+
+.dm-message:hover {
+    background-color: #fff;
+    border-left: 10px solid #142d4c; /* Adjust thickness and color as needed */
+}
+
+
+/* Style for the avatar */
+.dm-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Style for the message content */
+.dm-message-content {
+    width: 400px; /* Set the desired width */
+    overflow: hidden;
+}
+
+.dm-message-content h4, .dm-message-content p {
+    margin: 0;
+    font-size: 16px; /* Adjust font-size as needed */
+    color: #333; /* Adjust color as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dm-message-content h4, .dm-message-content p {
+    margin: 0;
+    font-size: 16px; /* Adjust font-size as needed */
+    color: #333; /* Adjust color as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Styling for the close button */
+.close-button {
+    background-color: #142d4c;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.close-button:hover {
+    color: white;
+    background-color: #0056b3; /* Slightly darker background on hover */
+}
+
+.account-recommendation-div{
+    border-radius: 20px;
+    border: 4px solid black;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.account-recommendation-div h3 {
+    margin-bottom: 10px;
+}
+
+.account-recommendation {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center; /* Center horizontally */
+    position: relative;
+}
+
+.account-recommendation::after{
+    content: '';
+    position: absolute;
+    left: 5%; /* Start underline a bit inside */
+    right: 5%; /* End underline a bit inside */
+    bottom: 0;
+    height: 2px; /* Thickness of the underline */
+    background-color: black; /* Color of the underline */
+   
+}
+.account-recommendation:hover::after {
+    opacity: 0; /* Make underline disappear */
+    transition: opacity 0.3s ease; /* Smooth transition */
+
+}
+.account-recommendation:hover {
+    background-color: #fff;
+    border-left: 10px solid #142d4c; /* Adjust thickness and color as needed */
+
+}
+.account-recommendation-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.account-recommendation-info .username {
+    font-weight: bold;
+}
+
+.account-recommendation-info .title {
+    font-size: 0.9em;
+    color: gray;
+}
+
+.account-recommendation-follow-btn {
+    border-radius: 20px;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    background-color: #142d4c;
+    color: white;
+    cursor: pointer;
+    width: 110px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: 13px;
+}
+.account-recommendation-follow-btn:hover{
+    background-color: #0056b3;
+    color: white
+}
+
+.trending-topics-div {
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%; /* Full width of parent */
+    height: 470px; /* Full height of parent */
+    border-radius: 20px;
+    border: 4px solid black;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.trending-topic {
+    padding: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden; /* Ensures underline doesn't overflow */
+}
+
+.trending-topic::after {
+    content: '';
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    height: 2px;
+    background-color: black;
+    transition: opacity 0.3s ease; /* Smooth transition */
+    opacity: 1; /* Underline visible */
+}
+
+.trending-topic:hover::after {
+    opacity: 0; /* Make underline disappear */
+}
+
+.trending-topic:hover {
+    background-color: #fff;
+    border-left: 10px solid #142d4c;
+}
+.trending-icon {
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    margin-left: 8px;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for better contrast */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 500px; /* Adjusted for a more compact design */
+    padding: 30px; /* Increased padding for more space */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* White background for better readability */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Softer shadow for a subtle effect */
+    position: relative; /* To position the exit button correctly */
+}
+
+/* Exit Button */
+.exit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #142d4c;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.exit-button:hover {
+    color: white;
+    background-color: #0056b3; /* Color change on hover */
+}
+
+/* Form Elements */
+.form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333; /* Darker text for better readability */
+}
+
+.form-container input[type="text"],
+.form-container textarea,
+.form-container input[type="file"] {
+    width: 100%; /* Full width for consistency */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd; /* Lighter border color */
+    border-radius: 4px;
+    font-size: 15px; /* Slightly larger text */
+}
+
+.form-container button[type="submit"] {
+    width: 100%; /* Full width button for better alignment */
+    padding: 12px;
+    background-color: #142d4c;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.form-container button[type="submit"]:hover {
+    color: white;
     background-color: #0056b3;
 }

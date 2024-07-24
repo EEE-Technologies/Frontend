@@ -7,64 +7,7 @@
     <link rel="stylesheet" href="home.css">
 
     <style>
-        .form-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .form-container {
-            max-width: 600px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 1001;
-        }
-
-        .form-container label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .form-container input[type="text"],
-        .form-container textarea {
-            width: calc(100% - 20px);
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .form-container button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .form-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .post-actions {
-            display: flex;
-            margin-top: 10px;
-        }
-
+       
     </style>
 </head>
 <body>
@@ -77,12 +20,12 @@
         </div>
         <div style="display: flex; align-items: center; gap: 20px;">
             <img src="images/community.png" class="navbar-item" style="border: 3px solid black;">
-            <img src="images/email.png" class="navbar-item">
+            <img src="images/email.png" class="navbar-item trigger-image" id="triggerImage">
         </div>
     </div>
 
-    <div class="content red-border">
-
+    <!-- This div contains the buttons for other actions on the right -->
+    <div class="content">
         <div class="side-div left red-border"> 
             <button class="side-button" id="homeButton">Home</button>
             <button class="side-button" id="userSearchButton">User Search</button>
@@ -95,7 +38,18 @@
             <button class="side-button" id="moreButton">More</button>
         </div>
 
-        <div class="side-div right red-border">Right </div>
+        <!-- This div contains the recommened follows and also trending news -->
+        <div class="side-div right">
+            <div class="account-recommendation-div ">
+                <h3 style="text-align: center;">Recommendations</h3>
+            </div>  
+            
+            <div class="trending-topics-div " >
+                <h3 style="text-align: center;">Trending</h3>
+               
+            </div>
+            
+        </div>
 
         <!-- This div holds the posts in it -->
         <div class="bottom-div" id="posts-content-container">  
@@ -124,9 +78,33 @@
                     <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-                
-        </div>
 
+            <div class="post">
+                <div class="post-header red-border">
+                    <div style="display: flex; align-items: center;">
+                        <img src="images/profile.png" alt="Avatar" class="avatar">
+                        <div class="username">John Doe</div>
+                    </div>
+                    <div class="red-border">
+                        <h3 >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra a sem eu dapibus. Nullam non pharetra odio, vitae ultricies dolor. </p>
+                    </div>
+                </div>
+                
+                <div class="post-image red-border">
+                    <!-- <img src="images/default_image.jpg" class="post-image" alt="Post Image"> -->
+                    <img src="images/sandbox/beach.jpg" class="post-image" alt="Post Image">
+                </div>
+                <div class="post-actions red-border">
+                    <img src="images/like_icon.png" alt="Like" class="action-img" id="likeButton">
+                    <img src="images/comment_icon.png" alt="Comment" class="action-img" id="commentButton">
+                    <img src="images/share_icon.png" alt="Share" class="action-img" id="shareButton">
+                </div>
+                <div class="post-description red-border">
+                    <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+        </div>
 
         <button class="circle-button" id="showFormButton" onclick="toggleForm()">+</button>
     </div>
@@ -141,7 +119,7 @@
                 <input type="text" id="username" name="username" required>
     
                 <label for="profilePicture">Profile Picture:</label>
-                <input type="file" id="profilePicture" name="profilePicture" required>
+                <input type="file" id="profilePicture" name="profilePicture" >
     
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required>
@@ -150,17 +128,28 @@
                 <textarea id="description" name="description" rows="4" required></textarea>
     
                 <label for="image">Post Picture:</label>
-                <input type="file" id="image" name="image" required>
+                <input type="file" id="image" name="image" >
     
                 <button type="submit">Submit</button>
             </form>
         </div>
     </div>
 
-    <script>
-        
-    </script>
+    <!-- This div contains the dm chats and is toggable -->
+    <div id="dmDiv" class="dm-div">
+        <div>
+            <div style="text-align: center; color: black;">
+                <h2>Direct Messages</h2>
+            </div>
+            <button id="closeButton" class="close-button">X</button>
+            <div class="dm-messages-preview">
+                <!-- Add more message previews as needed -->
+            </div>
+        </div>
+    </div>
 
+    <script>
+    </script>
     <script src="home.js"></script>
 
 </body>
