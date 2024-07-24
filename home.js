@@ -83,14 +83,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Takes a Json Object and turns it into a dm preview
+
 function addMessage(messageData) {
     const maxMessages = 8;
     const messagesContainer = document.querySelector('.dm-messages-preview');
-    const message = document.createElement('div');
-    message.className = 'dm-message';
+    
+    // Ensure there's a <ul> for the messages
+    let messageList = messagesContainer.querySelector('ul');
+    if (!messageList) {
+        messageList = document.createElement('ul');
+        messagesContainer.appendChild(messageList);
+    }
 
-    message.innerHTML = `
+    const messageItem = document.createElement('li');
+    messageItem.className = 'dm-message';
+
+    messageItem.innerHTML = `
         <div class="dm-avatar">
             <img src="${messageData.avatar}" alt="User Avatar">
         </div>
@@ -100,12 +108,13 @@ function addMessage(messageData) {
         </div>
     `;
 
-    if (messagesContainer.children.length >= maxMessages) {
-        messagesContainer.removeChild(messagesContainer.lastElementChild);
+    if (messageList.children.length >= maxMessages) {
+        messageList.removeChild(messageList.lastElementChild);
     }
 
-    messagesContainer.insertBefore(message, messagesContainer.firstChild);
+    messageList.insertBefore(messageItem, messageList.firstChild);
 }
+
 
 // Example usage with a JSON object
 const messageDataList = [
