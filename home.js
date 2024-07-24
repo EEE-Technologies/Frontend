@@ -159,3 +159,45 @@ const jsonData = `
 ]`;
 
 addRecommendationsFromJson(jsonData);
+
+// Function to populate the trending topics allows and replaces up to 7 items in div
+function updateTrendingTopics(jsonItem) {
+    const container = document.querySelector('.trending-topics-div');
+    const currentTopics = Array.from(container.querySelectorAll('.trending-topic'));
+
+    const topicDiv = document.createElement('div');
+    topicDiv.classList.add('trending-topic');
+
+    const iconImg = document.createElement('img');
+    iconImg.src = jsonItem.icon;
+    iconImg.alt = 'icon';
+    iconImg.classList.add('trending-icon');
+
+    topicDiv.appendChild(iconImg);
+    topicDiv.appendChild(document.createTextNode(jsonItem.topic));
+
+    container.insertBefore(topicDiv, container.children[1]);
+
+    if (currentTopics.length >= 7) {
+        currentTopics[currentTopics.length - 1].remove();
+    }
+}
+
+// Update trending topics with a new item
+// updateTrendingTopics(newTopic);
+const trendingData = [
+    { icon: 'images/trend.png', topic: 'AI Advancements in Healthcare' },
+    { icon: 'images/trend.png', topic: 'Global Climate Summit 2024' },
+    { icon: 'images/trend.png', topic: 'Breakthrough in Quantum Computing' },
+    { icon: 'images/trend.png', topic: 'Renewable Energy Innovations' },
+    { icon: 'images/trend.png', topic: 'SpaceX Mars Mission Update' },
+    { icon: 'images/trend.png', topic: 'Cryptocurrency Market Trends' },
+    { icon: 'images/trend.png', topic: 'New Electric Vehicle Releases' },
+    { icon: 'images/trend.png', topic: 'Advances in Cancer Research' },
+    { icon: 'images/trend.png', topic: 'Global Economic Outlook 2024' }
+];
+
+// Run the function on each item
+trendingData.forEach(updateTrendingTopics);
+
+

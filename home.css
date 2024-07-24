@@ -326,6 +326,8 @@ body, html {
 }
 .account-recommendation:hover::after {
     opacity: 0; /* Make underline disappear */
+    transition: opacity 0.3s ease; /* Smooth transition */
+
 }
 .account-recommendation:hover {
     background-color: #fff;
