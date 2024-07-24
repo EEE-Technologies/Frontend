@@ -65,58 +65,6 @@
             margin-top: 10px;
             
         }
-
-
-        .trending-topics-div {
-            margin-top: 30px;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 10px;
-            width: 100%; /* Full width of parent */
-            height: 470px; /* Full height of parent */
-            border-radius: 20px;
-            border: 4px solid black;
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
-        }
-
-        .trending-topic {
-            padding: 10px;
-            background-color: #f9f9f9;
-            cursor: pointer;
-            margin-bottom: 10px;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden; /* Ensures underline doesn't overflow */
-        }
-
-        .trending-topic::after {
-            content: '';
-            position: absolute;
-            left: 5%;
-            right: 5%;
-            bottom: 0;
-            height: 2px;
-            background-color: black;
-            transition: opacity 0.3s ease; /* Smooth transition */
-            opacity: 1; /* Underline visible */
-        }
-
-        .trending-topic:hover::after {
-            opacity: 0; /* Make underline disappear */
-        }
-
-        .trending-topic:hover {
-            background-color: #fff;
-            border-left: 10px solid #142d4c;
-        }
-        .trending-icon {
-            width: 20px; /* Adjust size as needed */
-            height: 20px; /* Adjust size as needed */
-            margin-left: 8px;
-            margin-right: 10px; /* Space between icon and text */
-        }
-
             
     </style>
 </head>
@@ -188,10 +136,33 @@
                     <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-            <button class="circle-button" id="showFormButton" onclick="toggleForm()">+</button>
 
+            <div class="post">
+                <div class="post-header red-border">
+                    <div style="display: flex; align-items: center;">
+                        <img src="images/profile.png" alt="Avatar" class="avatar">
+                        <div class="username">John Doe</div>
+                    </div>
+                    <div class="red-border">
+                        <h3 >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra a sem eu dapibus. Nullam non pharetra odio, vitae ultricies dolor. </p>
+                    </div>
+                </div>
+                
+                <div class="post-image red-border">
+                    <!-- <img src="images/default_image.jpg" class="post-image" alt="Post Image"> -->
+                    <img src="images/sandbox/beach.jpg" class="post-image" alt="Post Image">
+                </div>
+                <div class="post-actions red-border">
+                    <img src="images/like_icon.png" alt="Like" class="action-img" id="likeButton">
+                    <img src="images/comment_icon.png" alt="Comment" class="action-img" id="commentButton">
+                    <img src="images/share_icon.png" alt="Share" class="action-img" id="shareButton">
+                </div>
+                <div class="post-description red-border">
+                    <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+            
         </div>
-
 
         <button class="circle-button" id="showFormButton" onclick="toggleForm()">+</button>
     </div>

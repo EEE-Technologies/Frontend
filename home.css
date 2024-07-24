@@ -107,8 +107,7 @@ body, html {
 
 .post {
     background-color: #fff; /* Post background color */
-    border: 1px solid #ccc; /* Post border */
-    border-radius: 20px; /* Rounded corners */
+    border: 4px solid black;    border-radius: 20px; /* Rounded corners */
     padding: 20px;
     max-width: 600px; /* Example maximum width */
     height: 600px;
@@ -186,6 +185,9 @@ body, html {
 }
 
 .circle-button {
+    position: fixed; /* Stays fixed relative to the viewport */
+    bottom: 20px; 
+    right: 28vw; /* Distance from the right edge of the viewport */
     width: 60px;
     height: 60px;
     background-color: #142d4c;
@@ -199,9 +201,7 @@ body, html {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s;
-    position: fixed;
-    bottom: 20px;
-    right: 40px;
+    z-index: 1000; /* Ensure it's on top of all other elements */
 }
 
 .circle-button:hover {
@@ -366,4 +366,54 @@ body, html {
 .account-recommendation-follow-btn:hover{
     background-color: #0056b3;
     color: white
+}
+
+.trending-topics-div {
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%; /* Full width of parent */
+    height: 470px; /* Full height of parent */
+    border-radius: 20px;
+    border: 4px solid black;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.trending-topic {
+    padding: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden; /* Ensures underline doesn't overflow */
+}
+
+.trending-topic::after {
+    content: '';
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    height: 2px;
+    background-color: black;
+    transition: opacity 0.3s ease; /* Smooth transition */
+    opacity: 1; /* Underline visible */
+}
+
+.trending-topic:hover::after {
+    opacity: 0; /* Make underline disappear */
+}
+
+.trending-topic:hover {
+    background-color: #fff;
+    border-left: 10px solid #142d4c;
+}
+.trending-icon {
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    margin-left: 8px;
+    margin-right: 10px; /* Space between icon and text */
 }
