@@ -8,13 +8,22 @@ function toggleForm() {
 function createPostFromJSON(postData) {
     const { username, profile_picture, image, title, description } = postData;
 
+    // Define default images
+    const defaultProfilePicture = 'images/default_user.png';
+    const defaultPostImage = 'images/default_image.jpg';
+
+    // Determine image sources
+    const profilePictureSrc = profile_picture ? profile_picture : defaultProfilePicture;
+    const postImageSrc = image ? image : defaultPostImage;
+
+    // Create post element
     const post = document.createElement('div');
     post.className = 'post';
 
     post.innerHTML = `
       <div class="post-header red-border">
           <div style="display: flex; align-items: center;">
-              <img src="${profile_picture || 'images/default_profile.png'}" alt="Avatar" class="avatar">
+              <img src="${profilePictureSrc}" alt="Avatar" class="avatar">
               <div class="username">${username || 'Anonymous'}</div>
           </div>
           <div class="red-border">
@@ -23,7 +32,7 @@ function createPostFromJSON(postData) {
       </div>
       
       <div class="post-image red-border">
-          <img src="${image || 'images/default_image.jpg'}" class="post-image" alt="Post Image">
+          <img src="${postImageSrc}" class="post-image" alt="Post Image">
       </div>
       <div class="post-actions red-border">
           <img src="images/like_icon.png" alt="Like" class="action-img" id="likeButton">
@@ -40,6 +49,7 @@ function createPostFromJSON(postData) {
 
     console.log('Post created:', postData); // Log to verify post data
 }
+
 
 
 // Open form and take input create json from it and send json to createPostFromJson

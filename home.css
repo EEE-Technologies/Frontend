@@ -130,7 +130,7 @@ body, html {
     width: 50px; /* Example avatar size */
     height: 50px;
     border-radius: 50%; /* Round avatar */
-    border: 1px solid black;
+    border: 2px solid black;
     margin-right: 10px;
 }
 
