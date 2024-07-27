@@ -9,15 +9,15 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h1>Chat</h1>
-            <button class="nav-button" onclick="goToPage()">Go to Page</button>
+            <h1 style="">Chat</h1>
+            <button class="close-button" onclick="goToPage()">X</button>
         </div>
         <div class="chat-window" id="chat-window">
             <!-- Messages will be appended here -->
         </div>
         <div class="chat-input">
-            <input type="text" id="chat-input" placeholder="Type your message...">
-            <button id="send-button">Send</button>
+            <input type="text" class="send-message-bar" id="chat-input" placeholder="Type your message...">
+            <button id="send-button" class="send-message-button">↑</button>
         </div>
     </div>
     <script src="messages.js"></script>
