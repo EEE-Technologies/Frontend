@@ -10,15 +10,17 @@
     <div class="chat-container">
         <div class="chat-header">
             <h1>Chat</h1>
+            <button class="nav-button" onclick="goToPage()">Go to Page</button>
         </div>
         <div class="chat-window" id="chat-window">
             <!-- Messages will be appended here -->
         </div>
         <div class="chat-input">
             <input type="text" id="chat-input" placeholder="Type your message...">
-            <button onclick="sendMessage()">Send</button>
+            <button id="send-button">Send</button>
         </div>
     </div>
     <script src="messages.js"></script>
 </body>
 </html>
+

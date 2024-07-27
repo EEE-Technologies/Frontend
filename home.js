@@ -219,4 +219,8 @@ const trendingData = [
 // Run the function on each item
 trendingData.forEach(updateTrendingTopics);
 
-
+document.querySelectorAll('.dm-message').forEach(div => {
+    div.addEventListener('click', () => {
+        window.location.href = 'messages.html'; // Replace with your actual URL
+    });
+});
