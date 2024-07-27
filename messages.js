@@ -33,3 +33,32 @@ function addMessage(text, className) {
 function goToPage() {
     window.location.href = 'home.html'; // Replace with your actual URL
 }
+
+function addMessagesFromJson(messages) {
+    messages.forEach(message => {
+        const className = message.type === 'sent' ? 'user-message' : 'bot-message';
+        addMessage(message.text, className);
+    });
+}
+
+function addMessage(text, className) {
+    const chatWindow = document.getElementById('chat-window');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${className}`;
+
+    const messageText = document.createElement('p');
+    messageText.textContent = text;
+
+    messageDiv.appendChild(messageText);
+    chatWindow.appendChild(messageDiv);
+
+    // Scroll to the bottom
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+const messagesJson = [
+    { "type": "sent", "text": "Hello, how are you?" },
+    { "type": "received", "text": "I'm good, thank you! How about you?" }
+];
+
+addMessagesFromJson(messagesJson);
