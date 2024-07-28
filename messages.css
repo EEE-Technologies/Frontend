@@ -1,3 +1,6 @@
+.red-border {
+    border: 2px solid red;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -80,40 +83,62 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px; /* Space between messages */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.chat-window::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .message {
-    margin-bottom: 15px;
     display: flex;
     justify-content: flex-start; /* Align messages appropriately */
 }
 
 .user-message {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end; /* Align message to the right */
+    margin-left: auto; /* Push message to the right */
+    max-height: 600px;
+    max-width: 800px;
 }
 
 .incoming-message {
-    text-align: left;
+    display: flex;
+    justify-content: flex-start; /* Align message to the left */
+    max-height: 500px;
+    max-width: 700px;
 }
+
 
 .message p {
     display: inline-block;
-    padding: 20px 30px; /* Adjust padding as needed */
+    padding: 20px 30px;
     border-radius: 20px;
-    max-width: 100%; /* Ensure the message bubble uses full width available */
-    word-wrap: break-word; /* Break long words onto the next line */
-    overflow-wrap: break-word; /* For better cross-browser support */
+    max-width: 100%;
+    max-height: 700px;
+    font-size: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow normal line breaking */
+    line-height: 1.2; /* Adjust line height */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10; /* Adjust to fit within max-height */
 }
 
 .user-message p {
     background-color: #e1f5fe;
-    margin-left: auto; /* Align messages to the right */
+    margin-left: auto;
 }
 
 .incoming-message p {
     background-color: #e1eff1;
-    margin-right: auto; /* Align messages to the left */
+    margin-right: auto;
 }
+
+
 
 .chat-input {
     display: flex;
