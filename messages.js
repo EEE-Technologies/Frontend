@@ -33,10 +33,12 @@ function addMessage(text, className) {
 function goToPage() {
     window.location.href = 'home.html'; // Replace with your actual URL
 }
+document.getElementById('triggerHomeImage').addEventListener('click', goToPage);
+
 
 function addMessagesFromJson(messages) {
     messages.forEach(message => {
-        const className = message.type === 'sent' ? 'user-message' : 'bot-message';
+        const className = message.type === 'sent' ? 'user-message' : 'incoming-message';
         addMessage(message.text, className);
     });
 }

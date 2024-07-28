@@ -7,3 +7,5 @@ share_icon.png = https://www.flaticon.com/free-icon/share_2550240?term=share&pag
 email.png = https://www.flaticon.com/free-icon/email_3178165?term=mail&related_id=3178165
 trend.png = https://www.flaticon.com/free-icon/trend_3121571?term=trending&page=1&position=11&origin=search&related_id=3121571
 default_user.png = https://www.flaticon.com/free-icon/user_847969?term=default+profile&page=1&position=1&origin=search&related_id=847969
+home.png = https://www.flaticon.com/free-icon/home-button_5974907?term=home&related_id=5974907
+right-arrow.png = https://www.flaticon.com/free-icon/right-arrow_570221?term=send+arrow&page=2&position=14&origin=search&related_id=570221
