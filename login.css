@@ -1,0 +1,73 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Full-page container */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #142d4c;
+}
+
+/* Form styling */
+.login-form {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: 670px;
+    justify-content: center; /* Center horizontally */
+    border-radius: 30px; /* Makes the button rounded */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all children horizontally */
+}
+.login-form .logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px; /* Space below the logo */
+}
+
+.login-form h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;;
+}
+
+.login-form input {
+    width: 100%;
+    padding-top: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    height: 60px;
+    background-color: #142d4c;
+    border: none;
+    border-radius: 30px; /* Makes the button rounded */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center; /* Center the text inside the button */
+}
+
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
