@@ -125,26 +125,49 @@ function addMessage(messageData) {
     messageList.insertBefore(messageItem, messageList.firstChild);
 }
 
+const jsonString = localStorage.getItem('userData');
 
-// Example usage with a JSON object
-const messageDataList = [
-    { avatar: 'images/profile.png', username: 'User 1', preview: 'This is a short preview of message 1' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2'},
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2..dfasdfasdfasdfasdfasdfwdqsfouabsdflakjsdflkjbdasfkljbadfslkjbdafskjlbdfaskljb.' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2.sdfasdfasd..' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2.asdfasdfasdfa..' },
-    { avatar: 'images/profile.png', username: 'User 2', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }
-];
-// For each loop to use each json and apply it to the function
-messageDataList.forEach(data => addMessage(data));
+if (jsonString) {
+    const userDocument = JSON.parse(jsonString);
+    console.log(userDocument);
+    const messageDataList = userDocument.messageDataList;
+    if (messageDataList){       
+         messageDataList.forEach(data => addMessage(data));
+    }
+    else{
+        console.log('JSON not found');
+        const messageDataList = [
+            { avatar: 'images/profile.png', username: 'User 1', preview: 'This is a short preview of message 1' },
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2'},
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+            { avatar: 'images/profile.png', username: 'User 2', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' },
+        ];
+        // For each loop to use each json and apply it to the function
+        messageDataList.forEach(data => addMessage(data));
+    }
+
+  } else {
+    console.log('JSON not found');
+    const messageDataList = [
+        { avatar: 'images/profile.png', username: 'User 1', preview: 'This is a short preview of message 1' },
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2'},
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'This is a short preview of message 2' },
+        { avatar: 'images/profile.png', username: 'User 2', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' },
+    ];
+    // For each loop to use each json and apply it to the function
+    messageDataList.forEach(data => addMessage(data));
+  }
+
 // Add a new message individaully
-addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
+// addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
 
 // This function takes a json and parses and puts the data into the recommended accounts to follow
 function addRecommendationsFromJson( jsonData) {

@@ -23,17 +23,20 @@ document.querySelector('.login-form').addEventListener('submit', async function(
     const password = event.target.password.value;
 
     try {
-        const response = await fetch('http://localhost:3000/login', { // Ensure URL and port are correct
-            method: 'POST', // Ensure the method is POST
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
 
+        // Debugging: Log the response status and headers
+
         if (response.ok) {
             const result = await response.json();
+
             if (result.success) {
+                // Store the entire user document in localStorage
+                localStorage.setItem('userData', JSON.stringify(result.user));
                 window.location.href = 'home.html';
             } else {
                 alert(result.message);
@@ -46,6 +49,7 @@ document.querySelector('.login-form').addEventListener('submit', async function(
         alert('An error occurred. Please try again.');
     }
 });
+
 
 document.querySelector('.signup-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent the default form submission
