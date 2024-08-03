@@ -44,29 +44,73 @@ function addMessage(text, className) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-const userDataString = localStorage.getItem('userData');
-const userData = JSON.parse(userDataString);
-console.log(userData)
+const jsonString = localStorage.getItem('userData');
+const userData = JSON.parse(jsonString);
+userChatLogs = userData.user.messageDataList
+const targetUser = localStorage.getItem('targetUserChat');
 
+for (const item of userChatLogs){
+    if(item.username === targetUser){
+        console.log(item.messagesJson)
+        messagesJson = item.messagesJson
+    }
+} 
+if (messagesJson){
+    addMessagesFromJson(messagesJson);
+}
+else{
+        const messagesJson = [
+        { "type": "sent", "text": "Hey, are you free to chat?" },
+        { "type": "received", "text": "Yeah, I am. What's up?" },
+        { "type": "sent", "text": "Just wanted to catch up. How's your project going?" },
+        { "type": "received", "text": "It's going well, a bit hectic though. Deadlines are tight." },
+        { "type": "received", "text": "What about yours?" },
+        { "type": "sent", "text": "Same here. Trying to wrap up a few things by next week." },
+        { "type": "sent", "text": "Also, I started a new hobby recently." },
+        { "type": "received", "text": "Oh, what is it?" },
+        { "type": "sent", "text": "Photography! I've been exploring different techniques." },
+        { "type": "received", "text": "That's awesome! I've always wanted to try that." },
+        { "type": "sent", "text": "You should! It's really fun and rewarding." },
+        { "type": "received", "text": "Maybe I will. Any tips for a beginner?" },
+        { "type": "sent", "text": "Start with the basics and practice a lot. Natural light is your best friend." },
+        { "type": "received", "text": "Great, thanks for the tips!" },
+        { "type": "received", "text": "Let's catch up more over the weekend?" },
+        { "type": "sent", "text": "Sounds good. Looking forward to it!" }
+    ];
+    addMessagesFromJson(messagesJson);
 
-const messagesJson = [
-    { "type": "sent", "text": "Hey, are you free to chat?" },
-    { "type": "received", "text": "Yeah, I am. What's up?" },
-    { "type": "sent", "text": "Just wanted to catch up. How's your project going?" },
-    { "type": "received", "text": "It's going well, a bit hectic though. Deadlines are tight." },
-    { "type": "received", "text": "What about yours?" },
-    { "type": "sent", "text": "Same here. Trying to wrap up a few things by next week." },
-    { "type": "sent", "text": "Also, I started a new hobby recently." },
-    { "type": "received", "text": "Oh, what is it?" },
-    { "type": "sent", "text": "Photography! I've been exploring different techniques." },
-    { "type": "received", "text": "That's awesome! I've always wanted to try that." },
-    { "type": "sent", "text": "You should! It's really fun and rewarding." },
-    { "type": "received", "text": "Maybe I will. Any tips for a beginner?" },
-    { "type": "sent", "text": "Start with the basics and practice a lot. Natural light is your best friend." },
-    { "type": "received", "text": "Great, thanks for the tips!" },
-    { "type": "received", "text": "Let's catch up more over the weekend?" },
-    { "type": "sent", "text": "Sounds good. Looking forward to it!" }
-];
+}
 
+// try{
+//     for (const item of userChatLogs){
+//         if(item.username === targetUser){
+//             console.log(item.messagesJson)
+//             messagesJson = item.messagesJson
+//         }
+//     } 
+// }
+// catch (error) {
+//     const messagesJson = [
+//     { "type": "sent", "text": "Hey, are you free to chat?" },
+//     { "type": "received", "text": "Yeah, I am. What's up?" },
+//     { "type": "sent", "text": "Just wanted to catch up. How's your project going?" },
+//     { "type": "received", "text": "It's going well, a bit hectic though. Deadlines are tight." },
+//     { "type": "received", "text": "What about yours?" },
+//     { "type": "sent", "text": "Same here. Trying to wrap up a few things by next week." },
+//     { "type": "sent", "text": "Also, I started a new hobby recently." },
+//     { "type": "received", "text": "Oh, what is it?" },
+//     { "type": "sent", "text": "Photography! I've been exploring different techniques." },
+//     { "type": "received", "text": "That's awesome! I've always wanted to try that." },
+//     { "type": "sent", "text": "You should! It's really fun and rewarding." },
+//     { "type": "received", "text": "Maybe I will. Any tips for a beginner?" },
+//     { "type": "sent", "text": "Start with the basics and practice a lot. Natural light is your best friend." },
+//     { "type": "received", "text": "Great, thanks for the tips!" },
+//     { "type": "received", "text": "Let's catch up more over the weekend?" },
+//     { "type": "sent", "text": "Sounds good. Looking forward to it!" }
+// ];
+//     console.error("Error parsing JSON:", error);
+// }
 
-addMessagesFromJson(messagesJson);
+// console.log(userChatLogs)
+// console.log(userData)
+

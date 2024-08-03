@@ -50,8 +50,6 @@ function createPostFromJSON(postData) {
     console.log('Post created:', postData); // Log to verify post data
 }
 
-
-
 // Open form and take input create json from it and send json to createPostFromJson
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -93,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
+// Add data to dm preview
 function addMessage(messageData) {
     const maxMessages = 8;
     const messagesContainer = document.querySelector('.dm-messages-preview');
@@ -107,6 +105,7 @@ function addMessage(messageData) {
 
     const messageItem = document.createElement('li');
     messageItem.className = 'dm-message';
+    messageItem.id = messageData.username; 
 
     messageItem.innerHTML = `
         <div class="dm-avatar">
@@ -125,8 +124,8 @@ function addMessage(messageData) {
     messageList.insertBefore(messageItem, messageList.firstChild);
 }
 
+// code to populate the dm preview from mongo db, if no data than resort to default values
 const jsonString = localStorage.getItem('userData');
-
 if (jsonString) {
     const userDocument = JSON.parse(jsonString);
     const messageDataList = userDocument.user.messageDataList;
@@ -167,6 +166,26 @@ if (jsonString) {
 
 // Add a new message individaully
 // addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
+
+
+document.querySelectorAll('.dm-message').forEach(div => {
+    div.addEventListener('click', () => {
+        console.log(div.id);
+        const jsonDataUpload = localStorage.getItem('userData');
+        const userData = JSON.parse(jsonDataUpload);
+        const userChatLogs = userData.user.messageDataList
+        for (const item of userChatLogs){
+            if(item.username === div.id){
+                localStorage.setItem('targetUserChat', div.id);
+                window.location.href = 'messages.html'; 
+            }
+        }
+
+
+        // window.location.href = 'messages.html'; 
+    });
+});
+
 
 // This function takes a json and parses and puts the data into the recommended accounts to follow
 function addRecommendationsFromJson( jsonData) {
@@ -240,9 +259,3 @@ const trendingData = [
 
 // Run the function on each item
 trendingData.forEach(updateTrendingTopics);
-
-document.querySelectorAll('.dm-message').forEach(div => {
-    div.addEventListener('click', () => {
-        window.location.href = 'messages.html'; // Replace with your actual URL
-    });
-});
