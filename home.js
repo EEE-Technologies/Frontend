@@ -129,8 +129,7 @@ const jsonString = localStorage.getItem('userData');
 
 if (jsonString) {
     const userDocument = JSON.parse(jsonString);
-    console.log(userDocument);
-    const messageDataList = userDocument.messageDataList;
+    const messageDataList = userDocument.user.messageDataList;
     if (messageDataList){       
          messageDataList.forEach(data => addMessage(data));
     }

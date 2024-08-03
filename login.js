@@ -36,7 +36,7 @@ document.querySelector('.login-form').addEventListener('submit', async function(
 
             if (result.success) {
                 // Store the entire user document in localStorage
-                localStorage.setItem('userData', JSON.stringify(result.user));
+                localStorage.setItem('userData', JSON.stringify(result.userDocument));
                 window.location.href = 'home.html';
             } else {
                 alert(result.message);

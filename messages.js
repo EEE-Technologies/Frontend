@@ -44,6 +44,11 @@ function addMessage(text, className) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+const userDataString = localStorage.getItem('userData');
+const userData = JSON.parse(userDataString);
+console.log(userData)
+
+
 const messagesJson = [
     { "type": "sent", "text": "Hey, are you free to chat?" },
     { "type": "received", "text": "Yeah, I am. What's up?" },
