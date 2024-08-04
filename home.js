@@ -6,7 +6,7 @@ function toggleForm() {
 
 // Take a Json and create a post within that data
 function createPostFromJSON(postData) {
-    const { username, profile_picture, image, title, description } = postData;
+    const { username, profile_picture, post_image, title, description } = postData;
 
     // Define default images
     const defaultProfilePicture = 'images/default_user.png';
@@ -14,7 +14,7 @@ function createPostFromJSON(postData) {
 
     // Determine image sources
     const profilePictureSrc = profile_picture ? profile_picture : defaultProfilePicture;
-    const postImageSrc = image ? image : defaultPostImage;
+    const postImageSrc = post_image ? post_image : defaultPostImage;
 
     // Create post element
     const post = document.createElement('div');
