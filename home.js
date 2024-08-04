@@ -50,6 +50,56 @@ function createPostFromJSON(postData) {
     console.log('Post created:', postData); // Log to verify post data
 }
 
+// Take a list of json to create posts
+async function fetchUsers(usernames) {
+    try {
+        const response = await fetch('http://localhost:3000/get-users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ usernames }), // Send the list of usernames
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const users = await response.json();
+        return users;
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        return null; // Return null or handle the error as needed
+    }
+}
+
+// Example usage
+const userDataString = localStorage.getItem('userData');
+if (userDataString) {
+    const userData = JSON.parse(userDataString);
+    const following = userData.user.following;
+
+    // Use an async IIFE (Immediately Invoked Function Expression) to handle the async call
+    (async () => {
+        const fetchedUsers = await fetchUsers(following);
+        // console.log(following); // Log the list of following
+        userPosts = fetchedUsers.posts
+        userPosts.forEach(createPostFromJSON)
+        console.log(userPosts); 
+    })();
+} else {
+    console.log('No user data found in localStorage.');
+}
+
+
+
+
+
+
+
+
+
+
 // Open form and take input create json from it and send json to createPostFromJson
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -162,7 +212,7 @@ if (jsonString) {
     ];
     // For each loop to use each json and apply it to the function
     messageDataList.forEach(data => addMessage(data));
-  }
+}
 
 // Add a new message individaully
 // addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
