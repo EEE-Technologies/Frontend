@@ -95,24 +95,49 @@ const jsonStringItem = localStorage.getItem('userData');
 const userData = JSON.parse(jsonStringItem);
 userDataName = userData.user.name
 console.log(userDataName)
-// Open form and take input create json from it and send json to createPostFromJson
+
 document.getElementById('postForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission
 
+    // Create a FormData object to easily access the form's input fields
+    const formData = new FormData(event.target);
+
+    // Remove the file inputs (profilePicture and image) from the FormData object
     const postData = {
-        username: document.getElementById('username').value,
-        title: document.getElementById('title').value,
-        description: document.getElementById('description').value,
-        profile_picture: document.getElementById('profilePicture').files[0] ? URL.createObjectURL(document.getElementById('profilePicture').files[0]) : '',
-        post_image: document.getElementById('image').files[0] ? URL.createObjectURL(document.getElementById('image').files[0]) : ''
+        username: formData.get('username'),
+        profile_picture: formData.get('profilePicture') ? 
+            'images/sandbox/' + formData.get('profilePicture').name : 
+            'images/sandbox/default_user.png', 
+        title: formData.get('title'),
+        post_image: formData.get('image') ? 
+            'images/sandbox/' + formData.get('image').name : 
+            'images/sandbox/default_image.jpg', // Default empty string or placeholder
+        description: formData.get('description')
     };
-
-    console.log('Form submitted:', postData); 
-    console.log(postData.post_image)
-    createPostFromJSON(postData);
-
-    document.getElementById('postForm').reset();
+    
+    fetch('http://localhost:3000/uploadPost', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text(); // or response.json() if the response is JSON
+    })
+    .then(data => {
+        console.log('Success:', postData);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    // Log the form data to the console
+    console.log('Form submission data:', postData);
     toggleForm(); 
+
 });
 
 
