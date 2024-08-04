@@ -50,7 +50,7 @@ function createPostFromJSON(postData) {
     console.log('Post created:', postData); // Log to verify post data
 }
 
-// Take a list of json to create posts
+// Send request for a list of json to create posts
 async function fetchUsers(usernames) {
     try {
         const response = await fetch('http://localhost:3000/get-users', {
@@ -73,7 +73,7 @@ async function fetchUsers(usernames) {
     }
 }
 
-// Example usage
+//Convert response list into posts 
 const userDataString = localStorage.getItem('userData');
 if (userDataString) {
     const userData = JSON.parse(userDataString);
@@ -91,15 +91,10 @@ if (userDataString) {
     console.log('No user data found in localStorage.');
 }
 
-
-
-
-
-
-
-
-
-
+const jsonStringItem = localStorage.getItem('userData');
+const userData = JSON.parse(jsonStringItem);
+userDataName = userData.user.name
+console.log(userDataName)
 // Open form and take input create json from it and send json to createPostFromJson
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -109,16 +104,18 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
         profile_picture: document.getElementById('profilePicture').files[0] ? URL.createObjectURL(document.getElementById('profilePicture').files[0]) : '',
-        image: document.getElementById('image').files[0] ? URL.createObjectURL(document.getElementById('image').files[0]) : ''
+        post_image: document.getElementById('image').files[0] ? URL.createObjectURL(document.getElementById('image').files[0]) : ''
     };
 
     console.log('Form submitted:', postData); 
-
+    console.log(postData.post_image)
     createPostFromJSON(postData);
 
     document.getElementById('postForm').reset();
     toggleForm(); 
 });
+
+
 
 // Open and close dm 
 document.addEventListener('DOMContentLoaded', function() {
@@ -217,7 +214,7 @@ if (jsonString) {
 // Add a new message individaully
 // addMessage({ avatar: 'images/profile.png', username: 'New User', preview: 'Long texts can be incredibly beneficial in providing depth and detail to a topic. They allow for comprehensive exploration, enabling writers to delve into nuances and present various perspectives. This depth can enhance understanding, providing readers with a well-rounded view. For academic and professional contexts, long texts are often necessary to cover the complexity of a subject adequately. They can include thorough analyses, detailed evidence, and extensive background information that short texts simply cannot accommodate.' }); //Note only max 8 previews can be seen at a time, newest previes will be seen at the top and older previews are moved down
 
-
+// code to save target dm user to local storage to populate messages page when going to next page
 document.querySelectorAll('.dm-message').forEach(div => {
     div.addEventListener('click', () => {
         console.log(div.id);
@@ -230,9 +227,6 @@ document.querySelectorAll('.dm-message').forEach(div => {
                 window.location.href = 'messages.html'; 
             }
         }
-
-
-        // window.location.href = 'messages.html'; 
     });
 });
 
