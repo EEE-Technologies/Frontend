@@ -99,12 +99,20 @@ console.log(userDataName)
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    // Create a FormData object to easily access the form's input fields
+    let userName;
     const formData = new FormData(event.target);
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+        const userData = JSON.parse(userDataString);
+        userName = userData.user.name;
+    }
+    else{
+        userName = formData.get('username')
+    }
 
-    // Remove the file inputs (profilePicture and image) from the FormData object
+
     const postData = {
-        username: formData.get('username'),
+        username: userName,
         profile_picture: formData.get('profilePicture') ? 
             'images/sandbox/' + formData.get('profilePicture').name : 
             'images/sandbox/default_user.png', 
