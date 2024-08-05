@@ -110,42 +110,67 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
         userName = formData.get('username')
     }
 
+    // Helper function to convert a file to a Base64 string
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
 
-    const postData = {
-        username: userName,
-        profile_picture: formData.get('profilePicture') ? 
-            'images/sandbox/' + formData.get('profilePicture').name : 
-            'images/sandbox/default_user.png', 
-        title: formData.get('title'),
-        post_image: formData.get('image') ? 
-            'images/sandbox/' + formData.get('image').name : 
-            'images/sandbox/default_image.jpg', // Default empty string or placeholder
-        description: formData.get('description')
-    };
-    
-    fetch('http://localhost:3000/uploadPost', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postData)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    // Function to handle form submission
+    async function handleFormSubmit() {
+        let postImageBase64 = 'images/sandbox/default_image.jpg'; // Default placeholder
+
+        const postData = {
+            username: userName,
+            profile_picture: formData.get('profilePicture') ? 
+                'images/sandbox/' + formData.get('profilePicture').name : 
+                'images/sandbox/default_user.png', 
+            title: formData.get('title'),
+            post_image: postImageBase64,
+            description: formData.get('description')
+        };
+
+        // Check if an image file is provided
+        const imageFile = formData.get('image');
+        if (imageFile) {
+            try {
+                postImageBase64 = await fileToBase64(imageFile);
+                postData.post_image = postImageBase64;
+            } catch (error) {
+                console.error('Error converting image to Base64:', error);
+            }
         }
-        return response.text(); // or response.json() if the response is JSON
-    })
-    .then(data => {
-        console.log('Success:', postData);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-    // Log the form data to the console
-    console.log('Form submission data:', postData);
-    toggleForm(); 
 
+        fetch('http://localhost:3000/uploadPost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // or response.json() if the response is JSON
+        })
+        .then(data => {
+            console.log('Success:', postData);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+        // Log the form data to the console
+        console.log('Form submission data:', postData);
+        toggleForm(); 
+    }
+
+    handleFormSubmit();
 });
 
 
