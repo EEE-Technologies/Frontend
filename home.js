@@ -91,10 +91,9 @@ if (userDataString) {
     console.log('No user data found in localStorage.');
 }
 
-const jsonStringItem = localStorage.getItem('userData');
-const userData = JSON.parse(jsonStringItem);
-userDataName = userData.user.name
-console.log(userDataName)
+
+
+
 
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
@@ -123,16 +122,24 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     // Function to handle form submission
     async function handleFormSubmit() {
         let postImageBase64 = 'images/sandbox/default_image.jpg'; // Default placeholder
+        let profilePicture = 'images/sandbox/default_user.png'; // Default profile picture
+
 
         const postData = {
             username: userName,
-            profile_picture: formData.get('profilePicture') ? 
-                'images/sandbox/' + formData.get('profilePicture').name : 
-                'images/sandbox/default_user.png', 
+            profile_picture: profilePicture, 
             title: formData.get('title'),
             post_image: postImageBase64,
             description: formData.get('description')
         };
+
+        // Retrieve profile_picture from local storage if available
+        const profileDataString = localStorage.getItem('profileData');
+        if (profileDataString) {
+            const profileData = JSON.parse(profileDataString);
+            profilePicture = profileData.user.profile_picture || profilePicture;
+            postData.profile_picture = profilePicture;
+        }
 
         // Check if an image file is provided
         const imageFile = formData.get('image');
