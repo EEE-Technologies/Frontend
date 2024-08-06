@@ -67,14 +67,22 @@ document.querySelector('.signup-form').addEventListener('submit', async function
     if (profilePictureInput.files.length > 0) {
         const file = profilePictureInput.files[0];
         const reader = new FileReader();
+        
+        // Extract the MIME type from the file
+        const mimeType = file.type;
+    
         reader.onloadend = function() {
-            profilePictureBase64 = reader.result.split(',')[1]; // Get Base64 string from data URL
+            // Get Base64 string from data URL and add the correct prefix
+            const base64String = reader.result.split(',')[1]; // Get Base64 string from data URL
+            profilePictureBase64 = `data:${mimeType};base64,${base64String}`; // Add prefix to Base64 string
             submitForm(); // Call the function to submit the form data after conversion
         };
+    
         reader.readAsDataURL(file); // Convert file to data URL
     } else {
         submitForm(); // Call the function to submit the form data if no file is selected
     }
+    
 
     async function submitForm() {
         try {

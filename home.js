@@ -20,7 +20,9 @@ function createPostFromJSON(postData) {
     const defaultPostImage = 'images/default_image.jpg';
 
     // Determine image sources
-    const profilePictureSrc = profile_picture ? profile_picture : defaultProfilePicture;
+    const profilePictureSrc = profile_picture && profile_picture.startsWith('data:image/') 
+        ? profile_picture 
+        : defaultProfilePicture;
     const postImageSrc = post_image ? post_image : defaultPostImage;
 
     // Create post element
@@ -56,6 +58,7 @@ function createPostFromJSON(postData) {
 
     console.log('Post created:', postData); // Log to verify post data
 }
+
 
 // Send request for a list of json to create posts
 async function fetchUsers(usernames) {
@@ -113,7 +116,7 @@ if (userDataString) {
 }
 
 
-// This code is used to send data to db to later be used for creating posts
+// This code is used to send data to db to later be used to get json for creating posts
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
