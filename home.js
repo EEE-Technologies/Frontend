@@ -1,3 +1,10 @@
+const userDataObject = localStorage.getItem('userData');
+    if (userDataObject) {
+        const userData = JSON.parse(userDataObject);
+        userName = userData.following;
+        console.log(userName)
+    }
+
 // Functions to handle opening and closing posts function 
 function toggleForm() {
     const overlay = document.getElementById('formOverlay');
@@ -52,6 +59,11 @@ function createPostFromJSON(postData) {
 
 // Send request for a list of json to create posts
 async function fetchUsers(usernames) {
+    if (usernames.length === 0) {
+        console.warn('Usernames list is empty. Skipping fetch request.');
+        return []; // Return an empty array or whatever structure makes sense in your application
+    }
+
     try {
         const response = await fetch('http://localhost:3000/get-users', {
             method: 'POST',
@@ -79,22 +91,29 @@ if (userDataString) {
     const userData = JSON.parse(userDataString);
     const following = userData.user.following;
 
-    // Use an async IIFE (Immediately Invoked Function Expression) to handle the async call
-    (async () => {
-        const fetchedUsers = await fetchUsers(following);
-        // console.log(following); // Log the list of following
-        userPosts = fetchedUsers.posts
-        userPosts.forEach(createPostFromJSON)
-        console.log(userPosts); 
-    })();
+    // Check if the following list is empty
+    if (following.length === 0) {
+        console.log('Following list is empty. No users to fetch.');
+    } else {
+        // Use an async IIFE (Immediately Invoked Function Expression) to handle the async call
+        (async () => {
+            const fetchedUsers = await fetchUsers(following);
+
+            if (fetchedUsers && fetchedUsers.posts) {
+                const userPosts = fetchedUsers.posts;
+                userPosts.forEach(createPostFromJSON);
+                console.log(userPosts);
+            } else {
+                console.log('No posts found or failed to fetch users.');
+            }
+        })();
+    }
 } else {
     console.log('No user data found in localStorage.');
 }
 
 
-
-
-
+// This code is used to send data to db to later be used for creating posts
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -104,6 +123,7 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     if (userDataString) {
         const userData = JSON.parse(userDataString);
         userName = userData.user.name;
+        userProfilePicture = userData.user.profile_picture
     }
     else{
         userName = formData.get('username')
@@ -127,7 +147,7 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 
         const postData = {
             username: userName,
-            profile_picture: profilePicture, 
+            profile_picture: userProfilePicture, 
             title: formData.get('title'),
             post_image: postImageBase64,
             description: formData.get('description')
