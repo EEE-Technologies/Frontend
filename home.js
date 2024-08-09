@@ -393,17 +393,6 @@ const trendingData = [
 // Run the function on each item
 trendingData.forEach(updateTrendingTopics);
 
-
-
-
-
-
-
-
-
-
-
-
 // This code is used to open the search reuslts when typing in it
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
@@ -425,6 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
             filteredUsers.forEach(user => {
                 const resultItem = document.createElement('div');
                 resultItem.className = 'search-result-item';
+                resultItem.id = `${user.name}-search-result-item`
 
                 const img = document.createElement('img');
                 img.src = user.profile_picture || 'images/default_user.png';
