@@ -204,23 +204,6 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-
-    searchInput.addEventListener('input', function() {
-        const query = searchInput.value.trim();
-
-        // Show the search results div if there are characters in the input
-        if (query.length > 0) {
-            searchResults.style.display = 'block'; // Show the search results div
-        } else {
-            searchResults.style.display = 'none'; // Hide the search results div if input is empty
-        }
-    });
-});
-
-
 
 
 // Open and close dm 
@@ -409,6 +392,38 @@ const trendingData = [
 
 // Run the function on each item
 trendingData.forEach(updateTrendingTopics);
+
+
+
+
+
+
+
+
+
+
+
+
+// This code is used to open the search reuslts when typing in it
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    function toggleSearchResults() {
+        const query = searchInput.value.trim();
+
+        // Show or hide the search results div based on the input query length
+        if (query.length > 0) {
+            searchResults.style.display = 'flex'; // Show the search results div
+        } else {
+            searchResults.style.display = 'none'; // Hide the search results div if input is empty
+        }
+    }
+
+    // Attach the event listener to the input field
+    searchInput.addEventListener('input', toggleSearchResults);
+});
+
 
 
 

@@ -47,21 +47,71 @@ body, html {
 }
 
 /* Styles for the search results */
+/* Container for search results */
 .search-results {
     width: 50%; 
     width: 600px;
     min-width: 400px;    
-    height:500px;
+    height: 500px;
     border: 2px solid black; /* Optional border for visibility */
     border-radius: 20px; /* Rounded corners at the bottom */
     background-color: rgb(177, 29, 29); /* Background color */
-    display: none; /* Hidden by default */
+    display: none; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align items horizontally */
     position: absolute; /* Absolute positioning */
     top: 100%; /* Position it directly below the input */
     left: 0; /* Align it with the left edge of the input */
     z-index: 10; /* Ensure it appears above other elements */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
 }
+
+/* Container for individual search result items */
+.search-result-item {
+    background-color: #0056b3;
+    height: 80px;
+    width: 80%; /* Adjust width as needed */
+    margin: 20px 0;    
+    display: flex; /* Flexbox for layout inside items */
+    align-items: center; /* Center-align content vertically */
+    justify-content: center; /* Center-align content horizontally */
+    border-bottom: 1px solid black; /* Separator line between results */
+    cursor: pointer; /* Indicate that items are clickable */
+    border-radius: 10px; /* Optional rounded corners for result items */
+}
+
+.result-item-image {
+    width: 60px; /* Set width of the image */
+    height: 60px; /* Set height of the image */
+    border-radius: 50%; /* Make the image circular */
+    border: 2px solid black; /* Optional border for visibility */
+    margin-left: 10px; /* Space between image and left edge */
+    margin-right: 10px; /* Space between image and text */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .content {
