@@ -409,21 +409,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
 
-    function toggleSearchResults() {
-        const query = searchInput.value.trim();
+    async function fetchUserNamesAndPictures(query) {
+        try {
+            const response = await fetch('http://localhost:3000/api/get-search-results-username');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            const users = data.users || [];
+            searchResults.innerHTML = ''; // Clear previous results
 
-        // Show or hide the search results div based on the input query length
-        if (query.length > 0) {
-            searchResults.style.display = 'flex'; // Show the search results div
-        } else {
-            searchResults.style.display = 'none'; // Hide the search results div if input is empty
+            // Filter users based on the query and create result items
+            const filteredUsers = users.filter(user => user.name.toLowerCase().includes(query.toLowerCase()));
+
+            filteredUsers.forEach(user => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+
+                const img = document.createElement('img');
+                img.src = user.profile_picture || 'images/default_user.png';
+                img.className = 'result-item-image';
+                img.alt = 'Result Image';
+
+                const infoDiv = document.createElement('div');
+                infoDiv.className = 'result-item-info';
+
+                const title = document.createElement('h4');
+                title.className = 'result-item-title';
+                title.textContent = user.name;
+
+                infoDiv.appendChild(title);
+                resultItem.appendChild(img);
+                resultItem.appendChild(infoDiv);
+
+                searchResults.appendChild(resultItem);
+            });
+
+        } catch (error) {
+            console.error('Error fetching user names and pictures:', error);
         }
     }
 
-    // Attach the event listener to the input field
+    function toggleSearchResults() {
+        const query = searchInput.value.trim();
+
+        if (query.length > 0) {
+            searchResults.style.display = 'flex'; 
+            fetchUserNamesAndPictures(query); 
+        } else {
+            searchResults.style.display = 'none'; 
+        }
+    }
+
     searchInput.addEventListener('input', toggleSearchResults);
 });
 
 
-
+  
 
