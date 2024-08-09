@@ -202,10 +202,6 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     handleFormSubmit();
 });
 
-
-
-
-
 // Open and close dm 
 document.addEventListener('DOMContentLoaded', function() {
     const triggerImage = document.getElementById('triggerImage');
@@ -393,6 +389,8 @@ const trendingData = [
 // Run the function on each item
 trendingData.forEach(updateTrendingTopics);
 
+
+
 // This code is used to open the search reuslts when typing in it
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
@@ -414,7 +412,12 @@ document.addEventListener('DOMContentLoaded', function() {
             filteredUsers.forEach(user => {
                 const resultItem = document.createElement('div');
                 resultItem.className = 'search-result-item';
-                resultItem.id = `${user.name}-search-result-item`
+                resultItem.id = `${user.name}-search-result-item`;
+                
+                // Assign the onclick function with user information
+                resultItem.onclick = function() {
+                    goToProfilePage(); // Pass user name to function
+                };
 
                 const img = document.createElement('img');
                 img.src = user.profile_picture || 'images/default_user.png';
@@ -440,6 +443,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function goToProfilePage() {
+        // Replace with the appropriate URL for the profile page
+        window.location.href = `profile.html`;
+    }
+
     function toggleSearchResults() {
         const query = searchInput.value.trim();
 
@@ -455,5 +463,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-  
+
+
 
