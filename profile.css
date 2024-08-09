@@ -1,0 +1,152 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars on the body */
+}
+
+.navbar {
+    width: 100%;
+    height: 70px; /* Adjust the height as needed */
+    background-color: #142d4c; /* Example background color */
+    color: white; /* Example text color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* Example padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for the navbar */
+    box-sizing: border-box; /* Ensure padding is included in the height */
+}
+
+.navbar-item {
+    background-color: white;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid black;
+}
+
+.navbar-item:hover {
+    cursor: pointer;
+}
+
+/* Container for the search input and results */
+.search-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align horizontally */
+    position: relative; /* Positioning context for absolute child */
+}
+
+/* Styles for the search input */
+.navbar-search {
+    width: 50%; 
+    width: 600px;
+    min-width: 400px; 
+    height: 30px;
+    padding: 5px; 
+    border-radius: 40px; 
+    border: 2px solid black;
+}
+
+.content {
+    height: calc(100vh - 70px); /* Full viewport height minus navbar height */
+    padding: 20px; /* Example padding */
+    background-color: #f9f9f9; /* Example background color */
+    position: relative;
+}
+
+.profile-container-div {
+    width: 1200px; /* Adjust width as needed */
+    height: 850px; /* Adjust height as needed */
+    background-color: #f9f9f9; /* Adjust background color */
+    position: absolute;
+    bottom: 20px; /* Adjust bottom position as needed */
+    left: 50%;
+    border-left: 4px solid black; /* Adjust thickness and color as needed */
+    border-right: 4px solid black; /* Adjust thickness and color as needed */
+    transform: translateX(-50%);
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.profile-container-div::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.profile-header {
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    padding: 5px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-photo {
+    border: 4px solid black;
+    width: 85px; /* Adjust size as needed */
+    height: 85px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the photo circular */
+    margin-right: 10px; /* Space between photo and username */
+    margin-left: 10px; /* Space between photo and username */
+}
+
+.username {
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+.account-follow-btn {
+    border-radius: 50px;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    background-color: #142d4c;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    width: 180px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.account-follow-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Adjusted posts-container to be scrollable */
+.posts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+    gap: 15px; /* Space between posts */
+    overflow: auto; /* Allows scrolling in both directions */
+    padding: 15px; /* Optional: space inside the container */
+    height: 800px; /* Set a fixed height for the container */
+    box-sizing: border-box; /* Ensure padding is included in the dimensions */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.posts-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+
+.post-preview {
+    width: 100%; /* Make the post take up the full width of the column */
+    height: 400px; /* Fixed height for each post preview */
+    background-color: #f0f0f0; /* Light background for preview */
+    padding: 15px; /* Space inside each post */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for better visibility */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding-bottom: 100%; /* Maintain equal height as width */
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center; /* Centers the image */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for better visibility */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    position: relative; /* Required for positioning inner content */
+}
