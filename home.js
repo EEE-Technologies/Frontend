@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Assign the onclick function with user information
                 resultItem.onclick = function() {
-                    goToProfilePage(); // Pass user name to function
+                    goToProfilePage(this.id); // Pass user id to function
                 };
 
                 const img = document.createElement('img');
@@ -443,7 +443,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function goToProfilePage() {
+    function goToProfilePage(divId) {
+        // Store the div's id in localStorage
+        localStorage.setItem('accountProfileName', divId);
+        
         // Replace with the appropriate URL for the profile page
         window.location.href = `profile.html`;
     }
@@ -461,8 +464,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchInput.addEventListener('input', toggleSearchResults);
 });
-
-
-
-
 
