@@ -27,6 +27,42 @@ body, html {
 .navbar-item:hover {
     cursor: pointer;
 }
+/* Container for the search input and results */
+.search-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align horizontally */
+    position: relative; /* Positioning context for absolute child */
+}
+
+/* Styles for the search input */
+.navbar-search {
+    width: 50%; 
+    width: 600px;
+    min-width: 400px; 
+    height: 30px;
+    padding: 5px; 
+    border-radius: 40px; 
+    border: 2px solid black;
+}
+
+/* Styles for the search results */
+.search-results {
+    width: 50%; 
+    width: 600px;
+    min-width: 400px;    
+    height:500px;
+    border: 2px solid black; /* Optional border for visibility */
+    border-radius: 20px; /* Rounded corners at the bottom */
+    background-color: rgb(177, 29, 29); /* Background color */
+    display: none; /* Hidden by default */
+    position: absolute; /* Absolute positioning */
+    top: 100%; /* Position it directly below the input */
+    left: 0; /* Align it with the left edge of the input */
+    z-index: 10; /* Ensure it appears above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+}
+
 
 .content {
     height: calc(100vh - 70px); /* Full viewport height minus navbar height */

@@ -59,7 +59,6 @@ function createPostFromJSON(postData) {
     console.log('Post created:', postData); // Log to verify post data
 }
 
-
 // Send request for a list of json to create posts
 async function fetchUsers(usernames) {
     if (usernames.length === 0) {
@@ -202,6 +201,25 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 
     handleFormSubmit();
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim();
+
+        // Show the search results div if there are characters in the input
+        if (query.length > 0) {
+            searchResults.style.display = 'block'; // Show the search results div
+        } else {
+            searchResults.style.display = 'none'; // Hide the search results div if input is empty
+        }
+    });
+});
+
 
 
 
@@ -391,3 +409,6 @@ const trendingData = [
 
 // Run the function on each item
 trendingData.forEach(updateTrendingTopics);
+
+
+
