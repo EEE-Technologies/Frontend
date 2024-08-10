@@ -155,3 +155,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchInput.addEventListener('input', toggleSearchResults);
 });
+
+// Code to add user to account following list
+document.getElementById('followButton').addEventListener('click', () => {
+    const userDataObject = localStorage.getItem('userData');
+    if (userDataObject) {
+        const userData = JSON.parse(userDataObject);
+        userName = userData.user.name;
+      
+        // Data to send in the POST request
+        const data = {
+            username: userName,
+            newFollowing: searchName
+        };
+
+        // Send POST request using fetch
+        fetch('http://localhost:3000/api/add-following', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json()) // Parse the JSON from the response
+        .then(result => {
+            console.log('Success:', result);
+            // Handle the result here (e.g., update the UI, show a message, etc.)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle any errors here
+        });
+    }
+});
