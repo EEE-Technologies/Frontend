@@ -7,7 +7,7 @@ if (accountProfileName !== null) {
     console.log('Item not found in localStorage.');
 }
 
-
+//code to get account profile data 
 const searchName = accountProfileName.replace("-search-result-item", "");
 /**
  * Fetch user data by username from the server.
@@ -32,9 +32,46 @@ async function fetchUserByName(username) {
   }
 }
 
-// Example usage
-fetchUserByName(searchName).then(data => {
-  console.log('User data:', data);
-}).catch(error => {
-  console.error('Error:', error);
-});
+// Function to populate all the posts previews with images
+function createPostPreviews(posts) {
+    posts.forEach(post => {
+        const postPreviewImage = post.post_image; 
+        const postPreview = document.createElement('div');
+        postPreview.className = 'post-preview';
+        const imageUrl = postPreviewImage ? `url('${postPreviewImage}')` : 'url(\'images/default_image.jpg\')';
+        postPreview.style.backgroundImage = imageUrl;
+
+        document.querySelector('.posts-container').appendChild(postPreview);
+    });
+}
+
+// Function to update profile with the account username and profile picture
+function updateProfile(headerImageSrc, newUsername) {
+    const profileImage = document.querySelector('.profile-header .profile-photo');
+    profileImage.src = headerImageSrc;
+
+    const usernameSpan = document.querySelector('.profile-header .username');
+    usernameSpan.textContent = newUsername;
+}
+
+// This code takes all the previous functions and gets the data and calls it into the these functions
+fetchUserByName(searchName)
+  .then(data => {
+    console.log('User data:', data.user);
+
+    if (data.success && data.user) {
+        console.log(data.user.user)
+      const { name, posts, profile_picture } = data.user.user; 
+
+      createPostPreviews(posts);
+      updateProfile(profile_picture, name);
+
+    } else {
+      console.error('Error:', data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+
