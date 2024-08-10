@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Prevents scrollbars on the body */
+    overflow: hidden; /* Prevents scrollbars */
 }
 
 .navbar {
@@ -17,7 +17,6 @@ body, html {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for the navbar */
     box-sizing: border-box; /* Ensure padding is included in the height */
 }
-
 .navbar-item {
     background-color: white;
     width: 50px; 
@@ -25,11 +24,9 @@ body, html {
     border-radius: 50%;
     border: 4px solid black;
 }
-
 .navbar-item:hover {
     cursor: pointer;
 }
-
 /* Container for the search input and results */
 .search-container {
     display: flex;
@@ -47,6 +44,78 @@ body, html {
     padding: 5px; 
     border-radius: 40px; 
     border: 2px solid black;
+}
+
+/* Styles for the search results */
+/* Container for search results */
+.search-results {
+    width: 50%; 
+    width: 600px;
+    min-width: 400px;    
+    height: 500px;
+    border: 4px solid black; /* Optional border for visibility */
+    border-radius: 20px; /* Rounded corners at the bottom */
+    background-color: #f9f9f9; /* Background color */
+    display: none; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align items horizontally */
+    position: absolute; /* Absolute positioning */
+    top: 100%; /* Position it directly below the input */
+    left: 0; /* Align it with the left edge of the input */
+    z-index: 10; /* Ensure it appears above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.search-results::-webkit-scrollbar { 
+display: none;  /* Safari and Chrome */
+}
+
+/* Container for individual search result items */
+.search-result-item {
+    color: #000;
+    background-color: #f9f9f9;
+    height: 80px;
+    width: 90%; /* Adjust width as needed */
+    margin: 20px 0;
+    display: flex; /* Flexbox for layout inside items */
+    align-items: center; /* Center-align content vertically */
+    justify-content: flex-start; /* Align items to the start of the container */
+    cursor: pointer; /* Indicate that items are clickable */
+    position: relative; /* Positioning context for the underline */
+}
+
+.search-result-item::after {
+    content: '';
+    position: absolute;
+    left: 5%; /* Start underline a bit inside */
+    right: 5%; /* End underline a bit inside */
+    bottom: 0;
+    height: 3px; /* Thickness of the underline */
+    background-color: black; /* Color of the underline */
+    opacity: 1; /* Start with full opacity */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.search-result-item:hover::after {
+    opacity: 0; /* Make underline disappear */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.search-result-item:hover {
+    background-color: #fff;
+    border-left: 10px solid #142d4c;
+}
+
+.result-item-image {
+    width: 60px; /* Set width of the image */
+    height: 60px; /* Set height of the image */
+    border-radius: 50%; /* Make the image circular */
+    border: 2px solid black; /* Optional border for visibility */
+    margin-left: 17px; /* Space between image and left edge */
+    margin-right: 10px; /* Space between image and text */
 }
 
 .content {
