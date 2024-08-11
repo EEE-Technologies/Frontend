@@ -506,6 +506,10 @@ display: none;  /* Safari and Chrome */
     font-weight: bold;
     position: relative;
     overflow: hidden; /* Ensures underline doesn't overflow */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    text-overflow: ellipsis; /* Adds ellipsis ("...") when text overflows */
+    width: 100%; /* Ensure it takes up the full width of the container */
+    box-sizing: border-box; /* Ensures padding is included in the width calculation */
 }
 
 .trending-topic::after {
@@ -528,6 +532,26 @@ display: none;  /* Safari and Chrome */
     background-color: #fff;
     border-left: 10px solid #142d4c;
 }
+
+.trending-topic-link {
+    text-decoration: none; /* Removes the underline */
+    color: black; /* Sets the text color to black */
+    cursor: pointer; /* Ensures it looks like a link */
+}
+
+.trending-topic-link:visited {
+    color: black; /* Ensures visited links stay black */
+}
+
+.trending-topic-link:hover {
+    color: black; /* Ensures hovered links stay black */
+    text-decoration: none; /* Keeps the underline removed on hover */
+}
+
+.trending-topic-link:active {
+    color: black; /* Ensures active (clicked) links stay black */
+}
+
 .trending-icon {
     width: 20px; /* Adjust size as needed */
     height: 20px; /* Adjust size as needed */

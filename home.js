@@ -104,7 +104,6 @@ if (userDataString) {
             if (fetchedUsers && fetchedUsers.posts) {
                 const userPosts = fetchedUsers.posts;
                 userPosts.forEach(createPostFromJSON);
-                console.log(userPosts);
             } else {
                 console.log('No posts found or failed to fetch users.');
             }
@@ -350,23 +349,38 @@ const jsonData = `
 addRecommendationsFromJson(jsonData);
 
 // Function to populate the trending topics allows and replaces up to 7 items in div
-function updateTrendingTopics(jsonItem) {
+function updateTrendingTopics(jsonItem, outsideUrl) {
     const container = document.querySelector('.trending-topics-div');
     const currentTopics = Array.from(container.querySelectorAll('.trending-topic'));
 
+    // Create the anchor element
+    const link = document.createElement('a');
+    link.href = outsideUrl; 
+    link.classList.add('trending-topic-link'); 
+    link.target = '_blank'; // Optional: open in a new tab
+
+    // Create the topic div
     const topicDiv = document.createElement('div');
     topicDiv.classList.add('trending-topic');
 
+    // Create the icon image element
     const iconImg = document.createElement('img');
-    iconImg.src = jsonItem.icon;
+    // iconImg.src = jsonItem.icon;
+    iconImg.src = 'images/trend.png';
     iconImg.alt = 'icon';
     iconImg.classList.add('trending-icon');
 
+    // Append the image and topic text to the topic div
     topicDiv.appendChild(iconImg);
-    topicDiv.appendChild(document.createTextNode(jsonItem.topic));
+    topicDiv.appendChild(document.createTextNode(jsonItem));
 
-    container.insertBefore(topicDiv, container.children[1]);
+    // Append the topic div to the anchor element
+    link.appendChild(topicDiv);
 
+    // Insert the new topic before the second child in the container
+    container.insertBefore(link, container.children[1]);
+
+    // Remove the last topic if there are more than 7 topics
     if (currentTopics.length >= 7) {
         currentTopics[currentTopics.length - 1].remove();
     }
@@ -374,20 +388,20 @@ function updateTrendingTopics(jsonItem) {
 
 // Update trending topics with a new item
 // updateTrendingTopics(newTopic);
-const trendingData = [
-    { icon: 'images/trend.png', topic: 'AI Advancements in Healthcare' },
-    { icon: 'images/trend.png', topic: 'Global Climate Summit 2024' },
-    { icon: 'images/trend.png', topic: 'Breakthrough in Quantum Computing' },
-    { icon: 'images/trend.png', topic: 'Renewable Energy Innovations' },
-    { icon: 'images/trend.png', topic: 'SpaceX Mars Mission Update' },
-    { icon: 'images/trend.png', topic: 'Cryptocurrency Market Trends' },
-    { icon: 'images/trend.png', topic: 'New Electric Vehicle Releases' },
-    { icon: 'images/trend.png', topic: 'Advances in Cancer Research' },
-    { icon: 'images/trend.png', topic: 'Global Economic Outlook 2024' }
-];
+// const trendingData = [
+//     { icon: 'images/trend.png', topic: 'AI Advancements in Healthcare' },
+//     { icon: 'images/trend.png', topic: 'Global Climate Summit 2024' },
+//     { icon: 'images/trend.png', topic: 'Breakthrough in Quantum Computing' },
+//     { icon: 'images/trend.png', topic: 'Renewable Energy Innovations' },
+//     { icon: 'images/trend.png', topic: 'SpaceX Mars Mission Update' },
+//     { icon: 'images/trend.png', topic: 'Cryptocurrency Market Trends' },
+//     { icon: 'images/trend.png', topic: 'New Electric Vehicle Releases' },
+//     { icon: 'images/trend.png', topic: 'Advances in Cancer Research' },
+//     { icon: 'images/trend.png', topic: 'Global Economic Outlook 2024' }
+// ];
 
-// Run the function on each item
-trendingData.forEach(updateTrendingTopics);
+// // Run the function on each item
+// trendingData.forEach(updateTrendingTopics);
 
 
 
@@ -465,3 +479,20 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', toggleSearchResults);
 });
 
+
+url = 'https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=9716894d9a301d6a6d7f3f56e9d61555'
+articles = null
+fetch(url)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    articles = data.articles;
+    console.log(articles)
+
+    articles.forEach(function(articleItem) {
+        console.log(articleItem.title, articleItem.url);
+        updateTrendingTopics(articleItem.title, articleItem.url)
+    });
+
+  });
