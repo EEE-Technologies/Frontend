@@ -365,17 +365,27 @@ function updateTrendingTopics(jsonItem, outsideUrl) {
 
     // Create the icon image element
     const iconImg = document.createElement('img');
-    // iconImg.src = jsonItem.icon;
     iconImg.src = 'images/trend.png';
     iconImg.alt = 'icon';
     iconImg.classList.add('trending-icon');
 
     // Append the image and topic text to the topic div
     topicDiv.appendChild(iconImg);
-    topicDiv.appendChild(document.createTextNode(jsonItem));
+
+     // Create the span element for text
+    const textSpan = document.createElement('span');
+    textSpan.appendChild(document.createTextNode(jsonItem));
+    const spanContainerDiv = document.createElement('div');
+    spanContainerDiv.classList.add('spanContainerDiv');
+    spanContainerDiv.appendChild(textSpan);
+
+
+
+    // topicDiv.appendChild(document.createTextNode(jsonItem));
 
     // Append the topic div to the anchor element
     link.appendChild(topicDiv);
+    topicDiv.appendChild(spanContainerDiv);
 
     // Insert the new topic before the second child in the container
     container.insertBefore(link, container.children[1]);
@@ -385,24 +395,6 @@ function updateTrendingTopics(jsonItem, outsideUrl) {
         currentTopics[currentTopics.length - 1].remove();
     }
 }
-
-// Update trending topics with a new item
-// updateTrendingTopics(newTopic);
-// const trendingData = [
-//     { icon: 'images/trend.png', topic: 'AI Advancements in Healthcare' },
-//     { icon: 'images/trend.png', topic: 'Global Climate Summit 2024' },
-//     { icon: 'images/trend.png', topic: 'Breakthrough in Quantum Computing' },
-//     { icon: 'images/trend.png', topic: 'Renewable Energy Innovations' },
-//     { icon: 'images/trend.png', topic: 'SpaceX Mars Mission Update' },
-//     { icon: 'images/trend.png', topic: 'Cryptocurrency Market Trends' },
-//     { icon: 'images/trend.png', topic: 'New Electric Vehicle Releases' },
-//     { icon: 'images/trend.png', topic: 'Advances in Cancer Research' },
-//     { icon: 'images/trend.png', topic: 'Global Economic Outlook 2024' }
-// ];
-
-// // Run the function on each item
-// trendingData.forEach(updateTrendingTopics);
-
 
 
 // This code is used to open the search reuslts when typing in it
@@ -489,10 +481,17 @@ fetch(url)
   .then(function (data) {
     articles = data.articles;
     console.log(articles)
+    try{
+        articles.forEach(function(articleItem) {
+            console.log(articleItem.title, articleItem.url);
+            updateTrendingTopics(articleItem.title, articleItem.url)
+        });
+    }
+    catch(error){
+        for (let i = 0; i < 7; i++) {
+            updateTrendingTopics('api unavailable', 'https://news.google.com/home?hl=en-US&gl=US&ceid=US:en')
 
-    articles.forEach(function(articleItem) {
-        console.log(articleItem.title, articleItem.url);
-        updateTrendingTopics(articleItem.title, articleItem.url)
-    });
+        }
+    }   
 
   });

@@ -502,6 +502,7 @@ display: none;  /* Safari and Chrome */
     padding: 10px;
     background-color: #f9f9f9;
     cursor: pointer;
+    display: flex;
     margin-bottom: 10px;
     font-weight: bold;
     position: relative;
@@ -552,12 +553,31 @@ display: none;  /* Safari and Chrome */
     color: black; /* Ensures active (clicked) links stay black */
 }
 
+
 .trending-icon {
     width: 20px; /* Adjust size as needed */
     height: 20px; /* Adjust size as needed */
     margin-left: 8px;
     margin-right: 10px; /* Space between icon and text */
 }
+
+.trending-topic:hover .trending-icon {
+    visibility: hidden; /* Hide the image but keep its space */
+}
+
+
+.spanContainerDiv span {
+    position: absolute;
+    white-space: nowrap;
+    transform: translateX(0);
+    transition: 4s;
+}
+
+.spanContainerDiv:hover span {
+transform: translateX(calc(200px - 100%));
+}
+
+
 
 .form-overlay {
     position: fixed;
