@@ -55,49 +55,11 @@ document.getElementById('send-button').addEventListener('click', () => {
   
 
 
-
-
-
-// document.getElementById('send-button').addEventListener('click', sendMessage);
-
-// function sendMessage() {
-//     const inputElement = document.getElementById('chat-input');
-//     const message = inputElement.value.trim();
-
-//     if (message) {
-//         addMessage(message, 'user-message');
-//         inputElement.value = '';
-
-//         // Simulate bot response
-//         setTimeout(() => {
-//             addMessage('This is a bot response.', 'incoming-message');
-//         }, 1000);
-//     }
-// }
-
 // Funtion to go to the home page
 function goToPage() {
     window.location.href = 'home.html'; // Replace with your actual URL
 }
 document.getElementById('triggerHomeImage').addEventListener('click', goToPage);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Function to add all of the messages from mongodb to populate the messages page
