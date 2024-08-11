@@ -1,21 +1,3 @@
-// const userData = localStorage.getItem('userData');
-
-// if (accountProfileName !== null) {
-//     console.log('Retrieved item from localStorage:', accountProfileName);
-// } else {
-//     console.log('Item not found in localStorage.');
-// }
-
-
-
-
-
-
-
-
-
-
-
 // Replace 'selectedDivId' with the key of the item you want to retrieve
 const accountProfileName = localStorage.getItem('accountProfileName');
 
