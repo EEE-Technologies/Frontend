@@ -66,9 +66,12 @@ fetchUserByName(searchName)
     console.log('User data:', data.user);
 
     if (data.success && data.user) {
+        const userProfileData = data.user.user;
+        localStorage.setItem('userProfileData', JSON.stringify(userProfileData));
+
         console.log(data.user.user)
       const { name, posts, profile_picture } = data.user.user; 
-
+      profileAccountSearchData = [name, profile_picture]  
       createPostPreviews(posts);
       updateProfile(profile_picture, name);
 
@@ -80,6 +83,70 @@ fetchUserByName(searchName)
     console.error('Error:', error);
   });
 
+
+  //Funciton to update messagedatalist with the correct usernmae and photo
+async function addMessageToUser(username, messageData) {
+    const url = 'http://localhost:3000/api/add-message-to-user';
+    const body = {
+      username: username,
+      messageData: messageData
+    };
+  
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log('Message data added successfully:', data);
+      } else {
+        console.error('Failed to add message data:', data);
+      }
+    } catch (error) {
+      console.error('Error sending request:', error);
+    }
+  }
+   // Function to handle button click
+  function addMessageDataList(functionAvatar, functionUsername) {
+    console.log('pressed the button')
+    const userDataObject = localStorage.getItem('userData');
+    if (userDataObject) {
+        const userData = JSON.parse(userDataObject);
+        userName = userData.user.name;
+    
+        const messageData = {
+            avatar: functionAvatar,
+            username: functionUsername,
+            preview: ' ',
+            messagesJson: []
+          };
+          
+          addMessageToUser(userName, messageData);
+    }
+  }
+  
+//   This code is used to send the correct json to the messageDataList
+  let savedUserDataName = null
+  let savedUserDataProfilePicture = null
+
+  const savedUserData = localStorage.getItem('userProfileData');
+  if (savedUserData) {
+    const user = JSON.parse(savedUserData);
+    const { name, profile_picture } = user;
+    savedUserDataName = name
+    savedUserDataProfilePicture = profile_picture
+  } else {
+    console.log('No user data found in localStorage.');
+  }
+  document.getElementById('messageButton').addEventListener('click', () => {
+    addMessageDataList(savedUserDataProfilePicture, savedUserDataName);
+  });
 
 
 // This code is used to open the search reuslts when typing in it
@@ -188,3 +255,5 @@ document.getElementById('followButton').addEventListener('click', () => {
         });
     }
 });
+
+  
