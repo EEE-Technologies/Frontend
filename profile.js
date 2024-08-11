@@ -1,3 +1,21 @@
+// const userData = localStorage.getItem('userData');
+
+// if (accountProfileName !== null) {
+//     console.log('Retrieved item from localStorage:', accountProfileName);
+// } else {
+//     console.log('Item not found in localStorage.');
+// }
+
+
+
+
+
+
+
+
+
+
+
 // Replace 'selectedDivId' with the key of the item you want to retrieve
 const accountProfileName = localStorage.getItem('accountProfileName');
 
@@ -119,15 +137,25 @@ async function addMessageToUser(username, messageData) {
     if (userDataObject) {
         const userData = JSON.parse(userDataObject);
         userName = userData.user.name;
-    
-        const messageData = {
+        userProfilePicture = userData.user.profile_picture
+
+        const senderUserMessageData = {
             avatar: functionAvatar,
             username: functionUsername,
             preview: ' ',
             messagesJson: []
           };
+        
+        const receiverUserMessageData = {
+            avatar: userProfilePicture,
+            username: userName,
+            preview: ' ',
+            messagesJson: []
+        };
           
-          addMessageToUser(userName, messageData);
+          addMessageToUser(userName, senderUserMessageData);
+          addMessageToUser(functionUsername, receiverUserMessageData);
+
     }
   }
   
